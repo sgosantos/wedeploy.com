@@ -1,6 +1,6 @@
 {
 	"id": "landing",
-	"homeContainer": "www",
+	"homeContainer": "ui",
 	"customDomains": ["wedeploy.com"],
 	"masterToken": "r3m3mb3r"
 }
