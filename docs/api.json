@@ -1,0 +1,50 @@
+[
+	{
+		"path": "/feedback/*",
+		"method": "POST",
+		"data": true,
+		"parameters": {
+			"liked": {
+				"type": "boolean",
+				"required": true
+			},
+			"url": {
+				"type": "string",
+				"required": true
+			},
+			"timestamp": {
+				"type": "string",
+				"required": true
+			}
+		}
+	},
+	{
+		"path": "/feedback/*",
+		"method": ["GET", "PATCH", "PUT", "DELETE"],
+		"data": true,
+		"auth": {
+			"validator": "$auth != null"
+		}
+	},
+	{
+		"path": "/newsletter/*",
+		"method": "POST",
+		"parameters": {
+			"email": {
+				"type": "string",
+				"required": true
+			},
+			"timestamp": {
+				"type": "string",
+				"required": true
+			}
+		}
+	},
+	{
+		"path": "/newsletter/*",
+		"method": ["GET", "PATCH", "PUT", "DELETE"],
+		"auth": {
+			"validator": "$auth != null"
+		}
+	}
+]
