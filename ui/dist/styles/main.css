@@ -18705,8 +18705,7 @@ li.feature {
 @media (min-width: 600px) {
   #footer .info-container {
     text-align: left;
-    margin-top: 0;
-    width: 49% !important; } }
+    margin-top: 0; } }
 
 @media (min-width: 960px) {
   #footer .info-container {
@@ -18715,12 +18714,7 @@ li.feature {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
-    align-items: center;
-    width: 74% !important; } }
-
-@media (min-width: 1440px) {
-  #footer .info-container {
-    width: 37.5% !important; } }
+    align-items: center; } }
 
 @media (min-width: 320px) {
   #footer .info {
@@ -18740,12 +18734,11 @@ li.feature {
 
 @media (min-width: 960px) {
   #footer .footer__logo {
-    padding: 0 12px 0 0;
-    width: 32%; } }
+    padding: 0 36px 0 0; } }
 
 @media (min-width: 1280px) {
   #footer .footer__logo {
-    padding: 0 12px 0 0; } }
+    padding: 0 48px 0 0; } }
 
 #footer .footer__logo span {
   margin: 0;
@@ -18764,21 +18757,54 @@ li.feature {
 
 @media (min-width: 960px) {
   #footer .footer__copy {
-    padding: 0 12px;
-    width: 32%; } }
+    padding: 0 24px 0 0; } }
+
+@media (min-width: 1024px) {
+  #footer .footer__copy {
+    padding: 0 36px 0 0; } }
 
 @media (min-width: 1280px) {
   #footer .footer__copy {
-    padding: 0 12px;
-    width: 32.5%; } }
+    padding: 0 48px 0 0; } }
 
-@media (min-width: 1440px) {
-  #footer .footer__copy {
-    padding: 0 0 0 12px; } }
+@media (min-width: 320px) {
+  #footer .footer__link {
+    padding: 0 0 36px 0; } }
 
-@media (min-width: 1600px) {
-  #footer .footer__copy {
-    padding: 0 12px; } }
+@media (min-width: 600px) {
+  #footer .footer__link {
+    padding: 0 12px 12px 0; } }
+
+@media (min-width: 960px) {
+  #footer .footer__link {
+    padding: 0 24px 0 0; } }
+
+@media (min-width: 1024px) {
+  #footer .footer__link {
+    padding: 0 36px 0 0; } }
+
+@media (min-width: 1280px) {
+  #footer .footer__link {
+    padding: 0 48px 0 0; } }
+
+#footer .footer__link span {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: "Galano Medium", sans-serif;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: left; }
+
+#footer .footer__link a:hover span {
+  color: rgba(255, 255, 255, 0.9); }
+
+@media (min-width: 320px) {
+  #footer .footer__link:last-child {
+    padding: 0 0 36px 0; } }
+
+@media (min-width: 600px) {
+  #footer .footer__link:last-child {
+    padding: 0; } }
 
 #footer .footer__copy span {
   margin: 0;

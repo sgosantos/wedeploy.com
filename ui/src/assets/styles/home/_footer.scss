@@ -86,7 +86,6 @@
 	@media (min-width: 600px) {
 		text-align: left;
 		margin-top: 0;
-		width: 49% !important;
 	}
 
 	@media (min-width: 960px) {
@@ -96,12 +95,8 @@
 		flex-wrap: wrap;
 		justify-content: flex-start;
 		align-items: center;
-		width: 74% !important;
 	}
 
-	@media (min-width: 1440px) {
-		width: 37.5% !important;
-	}
 }
 
 #footer .info {
@@ -125,12 +120,11 @@
 	}
 
 	@media (min-width: 960px) {
-		padding: 0 12px 0 0;
-		width: 32%
+		padding: 0 36px 0 0;
 	}
 
 	@media (min-width: 1280px) {
-		padding: 0 12px 0 0;
+		padding: 0 48px 0 0;
 	}
 }
 
@@ -152,22 +146,63 @@
 	}
 
 	@media (min-width: 960px) {
-		padding: 0 12px;
-		width: 32%
+		padding: 0 24px 0 0;
+	}
+
+	@media (min-width: 1024px) {
+		padding: 0 36px 0 0;
 	}
 
 	@media (min-width: 1280px) {
-		padding: 0 12px;
-		width: 32.5%
+		padding: 0 48px 0 0;
+	}
+}
+
+#footer .footer__link {
+	@media (min-width: 320px) {
+		padding: 0 0 36px 0;
 	}
 
-	@media (min-width: 1440px) {
-		padding: 0 0 0 12px;
+	@media (min-width: 600px) {
+		padding: 0 12px 12px 0;
 	}
 
-	@media (min-width: 1600px) {
-		padding: 0 12px;
+	@media (min-width: 960px) {
+		padding: 0 24px 0 0;
 	}
+
+	@media (min-width: 1024px) {
+		padding: 0 36px 0 0;
+	}
+
+	@media (min-width: 1280px) {
+		padding: 0 48px 0 0;
+	}
+
+	span {
+		margin:0;
+		padding: 0;
+		font-size: 16px;
+		font-family: $font-family-secondary;
+		color: rgba($white, .7);
+		text-align: left;
+	}
+
+	a:hover span {
+		color: rgba($white, .9);
+	}
+}
+
+#footer .footer__link:last-child {
+
+	@media (min-width: 320px) {
+		padding: 0 0 36px 0;
+	}
+
+	@media (min-width: 600px) {
+		padding: 0;
+	}
+
 }
 
 #footer .footer__copy span {
