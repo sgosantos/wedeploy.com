@@ -16629,9 +16629,11 @@ input:-webkit-autofill {
   padding: 24px 0 12px; }
   #topbar .topbar .topbar-list {
     max-width: 100%; }
-    @media (max-width: 600px) {
-      #topbar .topbar .topbar-list {
-        display: none; } }
+    @media (max-width: 599px) {
+      #topbar .topbar .topbar-list .topbar-item {
+        margin: 0; }
+        #topbar .topbar .topbar-list .topbar-item:not(.login) {
+          display: none; } }
     @media (min-width: 600px) {
       #topbar .topbar .topbar-list .topbar-item {
         margin: 0 16px; } }

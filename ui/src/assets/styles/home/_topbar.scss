@@ -69,11 +69,15 @@
 	padding: ($baseline * 2) 0 ($baseline * 1);
 	.topbar-list {
 		max-width: 100%;
-		@media	(max-width: 600px) {
-			display: none;
-		}
 
 		.topbar-item {
+			@media	(max-width: 599px) {
+				margin: 0;
+				&:not(.login) {
+					display: none;
+				}
+			}
+
 			@media	(min-width: 600px) {
 				margin: 0 16px;
 			}
