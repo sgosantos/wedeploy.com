@@ -5,7 +5,7 @@ var babelHelpers = {};
 babelHelpers.typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
   return typeof obj;
 } : function (obj) {
-  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
 };
 
 babelHelpers.classCallCheck = function (instance, Constructor) {
@@ -454,12 +454,12 @@ babelHelpers;
   */
 	core.uniqueIdCounter_ = 1;
 
-	this.metal.core = core;
+	this['metal']['core'] = core;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metal.core;
+	var core = this['metal']['core'];
 
 	var array = function () {
 		function array() {
@@ -581,7 +581,7 @@ babelHelpers;
 		return array;
 	}();
 
-	this.metal.array = array;
+	this['metal']['array'] = array;
 }).call(this);
 /*!
  * Polyfill from Google's Closure Library.
@@ -818,7 +818,7 @@ babelHelpers;
 		return opt_returnValue;
 	};
 
-	this.metal.async = async;
+	this['metal']['async'] = async;
 }).call(this);
 'use strict';
 
@@ -881,7 +881,7 @@ babelHelpers;
 		return Disposable;
 	}();
 
-	this.metal.Disposable = Disposable;
+	this['metal']['Disposable'] = Disposable;
 }).call(this);
 'use strict';
 
@@ -978,7 +978,7 @@ babelHelpers;
 		return object;
 	}();
 
-	this.metal.object = object;
+	this['metal']['object'] = object;
 }).call(this);
 'use strict';
 
@@ -1067,25 +1067,25 @@ babelHelpers;
 		return string;
 	}();
 
-	this.metal.string = string;
+	this['metal']['string'] = string;
 }).call(this);
 'use strict';
 
 (function () {
-  var core = this.metal.core;
-  var array = this.metal.array;
-  var async = this.metal.async;
-  var Disposable = this.metal.Disposable;
-  var object = this.metal.object;
-  var string = this.metal.string;
-  this.metal.metal = core;
-  this.metalNamed.metal = this.metalNamed.metal || {};
-  this.metalNamed.metal.core = core;
-  this.metalNamed.metal.array = array;
-  this.metalNamed.metal.async = async;
-  this.metalNamed.metal.Disposable = Disposable;
-  this.metalNamed.metal.object = object;
-  this.metalNamed.metal.string = string;
+  var core = this['metal']['core'];
+  var array = this['metal']['array'];
+  var async = this['metal']['async'];
+  var Disposable = this['metal']['Disposable'];
+  var object = this['metal']['object'];
+  var string = this['metal']['string'];
+  this['metal']['metal'] = core;
+  this['metalNamed']['metal'] = this['metalNamed']['metal'] || {};
+  this['metalNamed']['metal']['core'] = core;
+  this['metalNamed']['metal']['array'] = array;
+  this['metalNamed']['metal']['async'] = async;
+  this['metalNamed']['metal']['Disposable'] = Disposable;
+  this['metalNamed']['metal']['object'] = object;
+  this['metalNamed']['metal']['string'] = string;
 }).call(this);
 'use strict';
 
@@ -1147,13 +1147,13 @@ babelHelpers;
 		return Embodied;
 	}();
 
-	this.metal.Embodied = Embodied;
+	this['metal']['Embodied'] = Embodied;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metalNamed.metal.core;
-	var Embodied = this.metal.Embodied;
+	var core = this['metalNamed']['metal']['core'];
+	var Embodied = this['metal']['Embodied'];
 
 	/**
   * Class responsible for storing and handling the body contents
@@ -1266,12 +1266,12 @@ babelHelpers;
 		return FilterBody;
 	}();
 
-	this.metal.FilterBody = FilterBody;
+	this['metal']['FilterBody'] = FilterBody;
 }).call(this);
 'use strict';
 
 (function () {
-	var Embodied = this.metal.Embodied;
+	var Embodied = this['metal']['Embodied'];
 
 	/**
   * Class responsible for building different types of geometric
@@ -1588,13 +1588,13 @@ babelHelpers;
 
 	Geo.Polygon = Polygon;
 
-	this.metal.Geo = Geo;
+	this['metal']['Geo'] = Geo;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metalNamed.metal.core;
-	var Embodied = this.metal.Embodied;
+	var core = this['metalNamed']['metal']['core'];
+	var Embodied = this['metal']['Embodied'];
 
 	/**
   * Class responsible for building range objects to be used by `Filter`.
@@ -1668,16 +1668,16 @@ babelHelpers;
 		return Range;
 	}(Embodied);
 
-	this.metal.Range = Range;
+	this['metal']['Range'] = Range;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metalNamed.metal.core;
-	var Embodied = this.metal.Embodied;
-	var FilterBody = this.metal.FilterBody;
-	var Geo = this.metal.Geo;
-	var Range = this.metal.Range;
+	var core = this['metalNamed']['metal']['core'];
+	var Embodied = this['metal']['Embodied'];
+	var FilterBody = this['metal']['FilterBody'];
+	var Geo = this['metal']['Geo'];
+	var Range = this['metal']['Range'];
 
 	/**
   * Class responsible for building filters.
@@ -2275,12 +2275,12 @@ babelHelpers;
 
 	Filter.ALL = '*';
 
-	this.metal.Filter = Filter;
+	this['metal']['Filter'] = Filter;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metalNamed.metal.core;
+	var core = this['metalNamed']['metal']['core'];
 
 	/**
   * Class responsible for storing authorization information.
@@ -2296,7 +2296,7 @@ babelHelpers;
    * @constructor
    */
 		function Auth(tokenOrUsername) {
-			var opt_password = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
+			var opt_password = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 			babelHelpers.classCallCheck(this, Auth);
 
 			this.token_ = core.isString(opt_password) ? null : tokenOrUsername;
@@ -2389,7 +2389,7 @@ babelHelpers;
 		return Auth;
 	}();
 
-	this.metal.Auth = Auth;
+	this['metal']['Auth'] = Auth;
 }).call(this);
 'use strict';
 
@@ -2424,13 +2424,13 @@ babelHelpers;
 		return Base64;
 	}();
 
-	this.metal.Base64 = Base64;
+	this['metal']['Base64'] = Base64;
 }).call(this);
 'use strict';
 
 (function () {
-	var Embodied = this.metal.Embodied;
-	var Range = this.metal.Range;
+	var Embodied = this['metal']['Embodied'];
+	var Range = this['metal']['Range'];
 
 	/**
   * Class that represents a search aggregation.
@@ -2794,15 +2794,15 @@ babelHelpers;
 
 	Aggregation.RangeAggregation = RangeAggregation;
 
-	this.metal.Aggregation = Aggregation;
+	this['metal']['Aggregation'] = Aggregation;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metalNamed.metal.core;
-	var Embodied = this.metal.Embodied;
-	var Filter = this.metal.Filter;
-	var Aggregation = this.metal.Aggregation;
+	var core = this['metalNamed']['metal']['core'];
+	var Embodied = this['metal']['Embodied'];
+	var Filter = this['metal']['Filter'];
+	var Aggregation = this['metal']['Aggregation'];
 
 	/**
   * Class responsible for building queries.
@@ -3154,7 +3154,7 @@ babelHelpers;
 		return Query;
 	}(Embodied);
 
-	this.metal.Query = Query;
+	this['metal']['Query'] = Query;
 }).call(this);
 'use strict';
 
@@ -3179,13 +3179,13 @@ babelHelpers;
 		};
 	}
 
-	this.metal.parseFromAnchor = parseFromAnchor;
+	this['metal']['parseFromAnchor'] = parseFromAnchor;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metalNamed.metal.core;
-	var parseFromAnchor = this.metal.parseFromAnchor;
+	var core = this['metalNamed']['metal']['core'];
+	var parseFromAnchor = this['metal']['parseFromAnchor'];
 
 	/**
   * Parses the given uri string into an object. The URL function will be used
@@ -3201,12 +3201,12 @@ babelHelpers;
 		}
 	}
 
-	this.metal.parse = parse;
+	this['metal']['parse'] = parse;
 }).call(this);
 'use strict';
 
 (function () {
-	var Disposable = this.metalNamed.metal.Disposable;
+	var Disposable = this['metalNamed']['metal']['Disposable'];
 
 	/**
   * A cached reference to the create function.
@@ -3395,15 +3395,15 @@ babelHelpers;
 		return MultiMap;
 	}(Disposable);
 
-	this.metal.MultiMap = MultiMap;
+	this['metal']['MultiMap'] = MultiMap;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metalNamed.metal.core;
-	var string = this.metalNamed.metal.string;
-	var parse = this.metal.parse;
-	var MultiMap = this.metal.MultiMap;
+	var core = this['metalNamed']['metal']['core'];
+	var string = this['metalNamed']['metal']['string'];
+	var parse = this['metal']['parse'];
+	var MultiMap = this['metal']['MultiMap'];
 
 
 	var parseFn_ = parse;
@@ -3426,7 +3426,7 @@ babelHelpers;
    * @constructor
    */
 		function Uri() {
-			var opt_uri = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
+			var opt_uri = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 			babelHelpers.classCallCheck(this, Uri);
 
 			this.url = Uri.parse(this.maybeAddProtocolAndHostname_(opt_uri));
@@ -4013,7 +4013,7 @@ babelHelpers;
   */
 	Uri.RANDOM_PARAM = 'zx';
 
-	this.metal.Uri = Uri;
+	this['metal']['Uri'] = Uri;
 }).call(this);
 /*!
  * Promises polyfill from Google's Closure Library.
@@ -4028,8 +4028,8 @@ babelHelpers;
 'use strict';
 
 (function () {
-  var core = this.metalNamed.metal.core;
-  var async = this.metalNamed.metal.async;
+  var core = this['metalNamed']['metal']['core'];
+  var async = this['metalNamed']['metal']['async'];
 
   /**
    * Provides a more strict interface for Thenables in terms of
@@ -4932,16 +4932,16 @@ babelHelpers;
   /** @override */
   CancellablePromise.CancellationError.prototype.name = 'cancel';
 
-  this.metalNamed.Promise = this.metalNamed.Promise || {};
-  this.metalNamed.Promise.CancellablePromise = CancellablePromise;
-  this.metal.Promise = CancellablePromise;
+  this['metalNamed']['Promise'] = this['metalNamed']['Promise'] || {};
+  this['metalNamed']['Promise']['CancellablePromise'] = CancellablePromise;
+  this['metal']['Promise'] = CancellablePromise;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metalNamed.metal.core;
-	var Uri = this.metal.Uri;
-	var Promise = this.metalNamed.Promise.CancellablePromise;
+	var core = this['metalNamed']['metal']['core'];
+	var Uri = this['metal']['Uri'];
+	var Promise = this['metalNamed']['Promise']['CancellablePromise'];
 
 	var Ajax = function () {
 		function Ajax() {
@@ -5050,7 +5050,7 @@ babelHelpers;
 		return Ajax;
 	}();
 
-	this.metal.Ajax = Ajax;
+	this['metal']['Ajax'] = Ajax;
 }).call(this);
 'use strict';
 
@@ -5079,13 +5079,13 @@ babelHelpers;
 		return Transport;
 	}();
 
-	this.metal.Transport = Transport;
+	this['metal']['Transport'] = Transport;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metalNamed.metal.core;
-	var MultiMap = this.metal.MultiMap;
+	var core = this['metalNamed']['metal']['core'];
+	var MultiMap = this['metal']['MultiMap'];
 
 	/**
   * Represents a client message (e.g. a request or a response).
@@ -5174,13 +5174,13 @@ babelHelpers;
 		return ClientMessage;
 	}();
 
-	this.metal.ClientMessage = ClientMessage;
+	this['metal']['ClientMessage'] = ClientMessage;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metalNamed.metal.core;
-	var ClientMessage = this.metal.ClientMessage;
+	var core = this['metalNamed']['metal']['core'];
+	var ClientMessage = this['metal']['ClientMessage'];
 
 	/**
   * Represents a client response object.
@@ -5268,14 +5268,14 @@ babelHelpers;
 		return ClientResponse;
 	}(ClientMessage);
 
-	this.metal.ClientResponse = ClientResponse;
+	this['metal']['ClientResponse'] = ClientResponse;
 }).call(this);
 'use strict';
 
 (function () {
-	var Ajax = this.metal.Ajax;
-	var Transport = this.metal.Transport;
-	var ClientResponse = this.metal.ClientResponse;
+	var Ajax = this['metal']['Ajax'];
+	var Transport = this['metal']['Transport'];
+	var ClientResponse = this['metal']['ClientResponse'];
 
 	/**
   * The implementation of an ajax transport to be used with {@link Launchpad}.
@@ -5314,12 +5314,12 @@ babelHelpers;
 		return AjaxTransport;
 	}(Transport);
 
-	this.metal.AjaxTransport = AjaxTransport;
+	this['metal']['AjaxTransport'] = AjaxTransport;
 }).call(this);
 'use strict';
 
 (function () {
-	var AjaxTransport = this.metal.AjaxTransport;
+	var AjaxTransport = this['metal']['AjaxTransport'];
 
 	/**
   * Provides a factory for data transport.
@@ -5387,14 +5387,14 @@ babelHelpers;
 
 	TransportFactory[TransportFactory.DEFAULT_TRANSPORT_NAME] = AjaxTransport;
 
-	this.metal.TransportFactory = TransportFactory;
+	this['metal']['TransportFactory'] = TransportFactory;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metalNamed.metal.core;
-	var ClientMessage = this.metal.ClientMessage;
-	var MultiMap = this.metal.MultiMap;
+	var core = this['metalNamed']['metal']['core'];
+	var ClientMessage = this['metal']['ClientMessage'];
+	var MultiMap = this['metal']['MultiMap'];
 
 	/**
   * Represents a client request object.
@@ -5500,21 +5500,21 @@ babelHelpers;
 
 	ClientRequest.DEFAULT_METHOD = 'GET';
 
-	this.metal.ClientRequest = ClientRequest;
+	this['metal']['ClientRequest'] = ClientRequest;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metalNamed.metal.core;
-	var Auth = this.metal.Auth;
-	var Base64 = this.metal.Base64;
-	var Embodied = this.metal.Embodied;
-	var Filter = this.metal.Filter;
-	var Query = this.metal.Query;
-	var TransportFactory = this.metal.TransportFactory;
-	var ClientRequest = this.metal.ClientRequest;
-	var MultiMap = this.metal.MultiMap;
-	var Uri = this.metal.Uri;
+	var core = this['metalNamed']['metal']['core'];
+	var Auth = this['metal']['Auth'];
+	var Base64 = this['metal']['Base64'];
+	var Embodied = this['metal']['Embodied'];
+	var Filter = this['metal']['Filter'];
+	var Query = this['metal']['Query'];
+	var TransportFactory = this['metal']['TransportFactory'];
+	var ClientRequest = this['metal']['ClientRequest'];
+	var MultiMap = this['metal']['MultiMap'];
+	var Uri = this['metal']['Uri'];
 
 
 	var io;
@@ -6192,16 +6192,16 @@ babelHelpers;
   */
 	Launchpad.DOMAIN = null;
 
-	this.metal.Launchpad = Launchpad;
+	this['metal']['Launchpad'] = Launchpad;
 }).call(this);
 'use strict';
 
 (function () {
-  var Filter = this.metal.Filter;
-  var Geo = this.metal.Geo;
-  var Launchpad = this.metal.Launchpad;
-  var Query = this.metal.Query;
-  var Range = this.metal.Range;
+  var Filter = this['metal']['Filter'];
+  var Geo = this['metal']['Geo'];
+  var Launchpad = this['metal']['Launchpad'];
+  var Query = this['metal']['Query'];
+  var Range = this['metal']['Range'];
 
 
   window.Filter = Filter;
@@ -6241,12 +6241,12 @@ babelHelpers;
 		return domData;
 	}();
 
-	this.metal.domData = domData;
+	this['metal']['domData'] = domData;
 }).call(this);
 'use strict';
 
 (function () {
-	var Disposable = this.metalNamed.metal.Disposable;
+	var Disposable = this['metalNamed']['metal']['Disposable'];
 
 	/**
   * EventHandle utility. Holds information about an event subscription, and
@@ -6321,15 +6321,15 @@ babelHelpers;
 		return EventHandle;
 	}(Disposable);
 
-	this.metal.EventHandle = EventHandle;
+	this['metal']['EventHandle'] = EventHandle;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metalNamed.metal.core;
-	var array = this.metalNamed.metal.array;
-	var Disposable = this.metalNamed.metal.Disposable;
-	var EventHandle = this.metal.EventHandle;
+	var core = this['metalNamed']['metal']['core'];
+	var array = this['metalNamed']['metal']['array'];
+	var Disposable = this['metalNamed']['metal']['Disposable'];
+	var EventHandle = this['metal']['EventHandle'];
 
 	/**
   * EventEmitter utility.
@@ -6744,13 +6744,13 @@ babelHelpers;
 		return EventEmitter;
 	}(Disposable);
 
-	this.metal.EventEmitter = EventEmitter;
+	this['metal']['EventEmitter'] = EventEmitter;
 }).call(this);
 'use strict';
 
 (function () {
-	var array = this.metalNamed.metal.array;
-	var Disposable = this.metalNamed.metal.Disposable;
+	var array = this['metalNamed']['metal']['array'];
+	var Disposable = this['metalNamed']['metal']['Disposable'];
 
 	/**
   * EventEmitterProxy utility. It's responsible for linking two EventEmitter
@@ -6978,12 +6978,12 @@ babelHelpers;
 		return EventEmitterProxy;
 	}(Disposable);
 
-	this.metal.EventEmitterProxy = EventEmitterProxy;
+	this['metal']['EventEmitterProxy'] = EventEmitterProxy;
 }).call(this);
 'use strict';
 
 (function () {
-	var Disposable = this.metalNamed.metal.Disposable;
+	var Disposable = this['metalNamed']['metal']['Disposable'];
 
 	/**
   * EventHandler utility. It's useful for easily removing a group of
@@ -7053,29 +7053,29 @@ babelHelpers;
 		return EventHandler;
 	}(Disposable);
 
-	this.metal.EventHandler = EventHandler;
+	this['metal']['EventHandler'] = EventHandler;
 }).call(this);
 'use strict';
 
 (function () {
-  var EventEmitter = this.metal.EventEmitter;
-  var EventEmitterProxy = this.metal.EventEmitterProxy;
-  var EventHandle = this.metal.EventHandle;
-  var EventHandler = this.metal.EventHandler;
-  this.metal.events = EventEmitter;
-  this.metalNamed.events = this.metalNamed.events || {};
-  this.metalNamed.events.EventEmitter = EventEmitter;
-  this.metalNamed.events.EventEmitterProxy = EventEmitterProxy;
-  this.metalNamed.events.EventHandle = EventHandle;
-  this.metalNamed.events.EventHandler = EventHandler;
+  var EventEmitter = this['metal']['EventEmitter'];
+  var EventEmitterProxy = this['metal']['EventEmitterProxy'];
+  var EventHandle = this['metal']['EventHandle'];
+  var EventHandler = this['metal']['EventHandler'];
+  this['metal']['events'] = EventEmitter;
+  this['metalNamed']['events'] = this['metalNamed']['events'] || {};
+  this['metalNamed']['events']['EventEmitter'] = EventEmitter;
+  this['metalNamed']['events']['EventEmitterProxy'] = EventEmitterProxy;
+  this['metalNamed']['events']['EventHandle'] = EventHandle;
+  this['metalNamed']['events']['EventHandler'] = EventHandler;
 }).call(this);
 'use strict';
 
 (function () {
-	var array = this.metalNamed.metal.array;
-	var core = this.metalNamed.metal.core;
-	var domData = this.metal.domData;
-	var EventHandle = this.metalNamed.events.EventHandle;
+	var array = this['metalNamed']['metal']['array'];
+	var core = this['metalNamed']['metal']['core'];
+	var domData = this['metal']['domData'];
+	var EventHandle = this['metalNamed']['events']['EventHandle'];
 
 	/**
   * This is a special EventHandle, that is responsible for dom delegated events
@@ -7126,12 +7126,12 @@ babelHelpers;
 		return DomDelegatedEventHandle;
 	}(EventHandle);
 
-	this.metal.DomDelegatedEventHandle = DomDelegatedEventHandle;
+	this['metal']['DomDelegatedEventHandle'] = DomDelegatedEventHandle;
 }).call(this);
 'use strict';
 
 (function () {
-	var EventHandle = this.metalNamed.events.EventHandle;
+	var EventHandle = this['metalNamed']['events']['EventHandle'];
 
 	/**
   * This is a special EventHandle, that is responsible for dom events, instead
@@ -7174,16 +7174,16 @@ babelHelpers;
 		return DomEventHandle;
 	}(EventHandle);
 
-	this.metal.DomEventHandle = DomEventHandle;
+	this['metal']['DomEventHandle'] = DomEventHandle;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metalNamed.metal.core;
-	var object = this.metalNamed.metal.object;
-	var domData = this.metal.domData;
-	var DomDelegatedEventHandle = this.metal.DomDelegatedEventHandle;
-	var DomEventHandle = this.metal.DomEventHandle;
+	var core = this['metalNamed']['metal']['core'];
+	var object = this['metalNamed']['metal']['object'];
+	var domData = this['metal']['domData'];
+	var DomDelegatedEventHandle = this['metal']['DomDelegatedEventHandle'];
+	var DomEventHandle = this['metal']['DomEventHandle'];
 
 
 	var NEXT_TARGET = '__metal_next_target__';
@@ -8038,13 +8038,13 @@ babelHelpers;
 	var elementsByTag = {};
 	dom.customEvents = {};
 
-	this.metal.dom = dom;
+	this['metal']['dom'] = dom;
 }).call(this);
 'use strict';
 
 (function () {
-	var dom = this.metal.dom;
-	var EventEmitterProxy = this.metalNamed.events.EventEmitterProxy;
+	var dom = this['metal']['dom'];
+	var EventEmitterProxy = this['metalNamed']['events']['EventEmitterProxy'];
 
 	/**
   * DomEventEmitterProxy utility. It extends `EventEmitterProxy` to also accept
@@ -8131,13 +8131,13 @@ babelHelpers;
 		return DomEventEmitterProxy;
 	}(EventEmitterProxy);
 
-	this.metal.DomEventEmitterProxy = DomEventEmitterProxy;
+	this['metal']['DomEventEmitterProxy'] = DomEventEmitterProxy;
 }).call(this);
 'use strict';
 
 (function () {
-	var dom = this.metal.dom;
-	var string = this.metalNamed.metal.string;
+	var dom = this['metal']['dom'];
+	var string = this['metalNamed']['metal']['string'];
 
 	/**
   * Class with static methods responsible for doing browser feature checks.
@@ -8213,13 +8213,13 @@ babelHelpers;
 	features.animationEventName_ = undefined;
 	features.attrOrderChange_ = undefined;
 
-	this.metal.features = features;
+	this['metal']['features'] = features;
 }).call(this);
 'use strict';
 
 (function () {
-	var async = this.metalNamed.metal.async;
-	var dom = this.metal.dom;
+	var async = this['metalNamed']['metal']['async'];
+	var dom = this['metal']['dom'];
 
 	/**
   * Utility functions for running javascript code in the global scope.
@@ -8358,13 +8358,13 @@ babelHelpers;
 		return globalEval;
 	}();
 
-	this.metal.globalEval = globalEval;
+	this['metal']['globalEval'] = globalEval;
 }).call(this);
 'use strict';
 
 (function () {
-	var async = this.metalNamed.metal.async;
-	var dom = this.metal.dom;
+	var async = this['metalNamed']['metal']['async'];
+	var dom = this['metal']['dom'];
 
 	/**
   * Utility functions for running styles.
@@ -8485,13 +8485,13 @@ babelHelpers;
 		return globalEvalStyles;
 	}();
 
-	this.metal.globalEvalStyles = globalEvalStyles;
+	this['metal']['globalEvalStyles'] = globalEvalStyles;
 }).call(this);
 'use strict';
 
 (function () {
-	var dom = this.metal.dom;
-	var features = this.metal.features;
+	var dom = this['metal']['dom'];
+	var features = this['metal']['features'];
 
 
 	var mouseEventMap = {
@@ -8535,31 +8535,31 @@ babelHelpers;
 'use strict';
 
 (function () {
-  var dom = this.metal.dom;
-  var domData = this.metal.domData;
-  var DomEventEmitterProxy = this.metal.DomEventEmitterProxy;
-  var DomEventHandle = this.metal.DomEventHandle;
-  var features = this.metal.features;
-  var globalEval = this.metal.globalEval;
-  var globalEvalStyles = this.metal.globalEvalStyles;
-  this.metal.dom = dom;
-  this.metalNamed.dom = this.metalNamed.dom || {};
-  this.metalNamed.dom.dom = dom;
-  this.metalNamed.dom.domData = domData;
-  this.metalNamed.dom.DomEventEmitterProxy = DomEventEmitterProxy;
-  this.metalNamed.dom.DomEventHandle = DomEventHandle;
-  this.metalNamed.dom.features = features;
-  this.metalNamed.dom.globalEval = globalEval;
-  this.metalNamed.dom.globalEvalStyles = globalEvalStyles;
+  var dom = this['metal']['dom'];
+  var domData = this['metal']['domData'];
+  var DomEventEmitterProxy = this['metal']['DomEventEmitterProxy'];
+  var DomEventHandle = this['metal']['DomEventHandle'];
+  var features = this['metal']['features'];
+  var globalEval = this['metal']['globalEval'];
+  var globalEvalStyles = this['metal']['globalEvalStyles'];
+  this['metal']['dom'] = dom;
+  this['metalNamed']['dom'] = this['metalNamed']['dom'] || {};
+  this['metalNamed']['dom']['dom'] = dom;
+  this['metalNamed']['dom']['domData'] = domData;
+  this['metalNamed']['dom']['DomEventEmitterProxy'] = DomEventEmitterProxy;
+  this['metalNamed']['dom']['DomEventHandle'] = DomEventHandle;
+  this['metalNamed']['dom']['features'] = features;
+  this['metalNamed']['dom']['globalEval'] = globalEval;
+  this['metalNamed']['dom']['globalEvalStyles'] = globalEvalStyles;
 }).call(this);
 'use strict';
 
 (function () {
-	var array = this.metalNamed.metal.array;
-	var async = this.metalNamed.metal.async;
-	var core = this.metalNamed.metal.core;
-	var object = this.metalNamed.metal.object;
-	var EventEmitter = this.metalNamed.events.EventEmitter;
+	var array = this['metalNamed']['metal']['array'];
+	var async = this['metalNamed']['metal']['async'];
+	var core = this['metalNamed']['metal']['core'];
+	var object = this['metalNamed']['metal']['object'];
+	var EventEmitter = this['metalNamed']['events']['EventEmitter'];
 
 	/**
   * State adds support for having object properties that can be watched for
@@ -9245,7 +9245,7 @@ babelHelpers;
 		INITIALIZED: 3
 	};
 
-	this.metal.State = State;
+	this['metal']['State'] = State;
 }).call(this);
 'use strict';
 
@@ -9293,13 +9293,13 @@ babelHelpers;
 		return Geometry;
 	}();
 
-	this.metal.Geometry = Geometry;
+	this['metal']['Geometry'] = Geometry;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metal.metal;
-	var Geometry = this.metal.Geometry;
+	var core = this['metal']['metal'];
+	var Geometry = this['metal']['Geometry'];
 
 	/**
   * Class with static methods responsible for doing browser position checks.
@@ -9678,12 +9678,12 @@ babelHelpers;
 		return Position;
 	}();
 
-	this.metal.Position = Position;
+	this['metal']['Position'] = Position;
 }).call(this);
 'use strict';
 
 (function () {
-	var Position = this.metal.Position;
+	var Position = this['metal']['Position'];
 
 	/**
   * Align utility. Computes region or best region to align an element with
@@ -9908,29 +9908,29 @@ babelHelpers;
 	Align.Bottom = Align.BottomCenter;
 	Align.Left = Align.LeftCenter;
 
-	this.metal.Align = Align;
+	this['metal']['Align'] = Align;
 }).call(this);
 'use strict';
 
 (function () {
-  var Align = this.metal.Align;
-  var Geometry = this.metal.Geometry;
-  var Position = this.metal.Position;
-  this.metal.position = Position;
-  this.metalNamed.position = this.metalNamed.position || {};
-  this.metalNamed.position.Align = Align;
-  this.metalNamed.position.Geometry = Geometry;
-  this.metalNamed.position.Position = Position;
+  var Align = this['metal']['Align'];
+  var Geometry = this['metal']['Geometry'];
+  var Position = this['metal']['Position'];
+  this['metal']['position'] = Position;
+  this['metalNamed']['position'] = this['metalNamed']['position'] || {};
+  this['metalNamed']['position']['Align'] = Align;
+  this['metalNamed']['position']['Geometry'] = Geometry;
+  this['metalNamed']['position']['Position'] = Position;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metal.metal;
-	var dom = this.metalNamed.dom.dom;
-	var DomEventEmitterProxy = this.metalNamed.dom.DomEventEmitterProxy;
-	var State = this.metal.State;
-	var EventEmitter = this.metal.events;
-	var Position = this.metal.position;
+	var core = this['metal']['metal'];
+	var dom = this['metalNamed']['dom']['dom'];
+	var DomEventEmitterProxy = this['metalNamed']['dom']['DomEventEmitterProxy'];
+	var State = this['metal']['State'];
+	var EventEmitter = this['metal']['events'];
+	var Position = this['metal']['position'];
 
 	/**
   * Affix utility.
@@ -10103,14 +10103,14 @@ babelHelpers;
 		}
 	};
 
-	this.metal.Affix = Affix;
+	this['metal']['Affix'] = Affix;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metal.metal;
-	var dom = this.metalNamed.dom.dom;
-	var features = this.metalNamed.dom.features;
+	var core = this['metal']['metal'];
+	var dom = this['metalNamed']['dom']['dom'];
+	var features = this['metalNamed']['dom']['features'];
 
 	var Anim = function () {
 		function Anim() {
@@ -10212,13 +10212,13 @@ babelHelpers;
 		return Anim;
 	}();
 
-	this.metal.Anim = Anim;
+	this['metal']['Anim'] = Anim;
 }).call(this);
 'use strict';
 
 (function () {
-	var EventEmitter = this.metalNamed.events.EventEmitter;
-	var EventHandler = this.metalNamed.events.EventHandler;
+	var EventEmitter = this['metalNamed']['events']['EventEmitter'];
+	var EventHandler = this['metalNamed']['events']['EventHandler'];
 
 	/**
   * Base class that component renderers should extend from. It defines the
@@ -10390,19 +10390,19 @@ babelHelpers;
 		return ComponentRenderer;
 	}(EventEmitter);
 
-	this.metal.ComponentRenderer = ComponentRenderer;
+	this['metal']['ComponentRenderer'] = ComponentRenderer;
 }).call(this);
 'use strict';
 
 (function () {
-	var array = this.metalNamed.metal.array;
-	var core = this.metalNamed.metal.core;
-	var object = this.metalNamed.metal.object;
-	var dom = this.metalNamed.dom.dom;
-	var DomEventEmitterProxy = this.metalNamed.dom.DomEventEmitterProxy;
-	var ComponentRenderer = this.metal.ComponentRenderer;
-	var EventHandler = this.metalNamed.events.EventHandler;
-	var State = this.metal.State;
+	var array = this['metalNamed']['metal']['array'];
+	var core = this['metalNamed']['metal']['core'];
+	var object = this['metalNamed']['metal']['object'];
+	var dom = this['metalNamed']['dom']['dom'];
+	var DomEventEmitterProxy = this['metalNamed']['dom']['DomEventEmitterProxy'];
+	var ComponentRenderer = this['metal']['ComponentRenderer'];
+	var EventHandler = this['metalNamed']['events']['EventHandler'];
+	var State = this['metal']['State'];
 
 	/**
   * Component collects common behaviors to be followed by UI components, such
@@ -11268,12 +11268,12 @@ babelHelpers;
   */
 	Component.prototype[Component.COMPONENT_FLAG] = true;
 
-	this.metal.Component = Component;
+	this['metal']['Component'] = Component;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metalNamed.metal.core;
+	var core = this['metalNamed']['metal']['core'];
 
 	/**
   * The component registry is used to register components, so they can
@@ -11341,19 +11341,19 @@ babelHelpers;
 
 	ComponentRegistry.components_ = {};
 
-	this.metal.ComponentRegistry = ComponentRegistry;
+	this['metal']['ComponentRegistry'] = ComponentRegistry;
 }).call(this);
 'use strict';
 
 (function () {
-  var Component = this.metal.Component;
-  var ComponentRegistry = this.metal.ComponentRegistry;
-  var ComponentRenderer = this.metal.ComponentRenderer;
-  this.metal.component = Component;
-  this.metalNamed.component = this.metalNamed.component || {};
-  this.metalNamed.component.Component = Component;
-  this.metalNamed.component.ComponentRegistry = ComponentRegistry;
-  this.metalNamed.component.ComponentRenderer = ComponentRenderer;
+  var Component = this['metal']['Component'];
+  var ComponentRegistry = this['metal']['ComponentRegistry'];
+  var ComponentRenderer = this['metal']['ComponentRenderer'];
+  this['metal']['component'] = Component;
+  this['metalNamed']['component'] = this['metalNamed']['component'] || {};
+  this['metalNamed']['component']['Component'] = Component;
+  this['metalNamed']['component']['ComponentRegistry'] = ComponentRegistry;
+  this['metalNamed']['component']['ComponentRenderer'] = ComponentRenderer;
 }).call(this);
 'use strict';
 
@@ -12584,8 +12584,8 @@ babelHelpers;
 'use strict';
 
 (function () {
-	var array = this.metalNamed.metal.array;
-	var object = this.metalNamed.metal.object;
+	var array = this['metalNamed']['metal']['array'];
+	var object = this['metalNamed']['metal']['object'];
 
 	/**
   * Class responsible for intercepting incremental dom functions through AOP.
@@ -12699,12 +12699,12 @@ babelHelpers;
 
 	IncrementalDOM.attributes[IncrementalDOM.symbols.default] = handleCall.bind(null, 'attributes');
 
-	this.metal.IncrementalDomAop = IncrementalDomAop;
+	this['metal']['IncrementalDomAop'] = IncrementalDomAop;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metal.metal;
+	var core = this['metal']['metal'];
 
 	/**
   * Utility functions used to handle incremental dom calls.
@@ -12771,14 +12771,14 @@ babelHelpers;
 		return IncrementalDomUtils;
 	}();
 
-	this.metal.IncrementalDomUtils = IncrementalDomUtils;
+	this['metal']['IncrementalDomUtils'] = IncrementalDomUtils;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metal.metal;
-	var IncrementalDomAop = this.metal.IncrementalDomAop;
-	var IncrementalDomUtils = this.metal.IncrementalDomUtils;
+	var core = this['metal']['metal'];
+	var IncrementalDomAop = this['metal']['IncrementalDomAop'];
+	var IncrementalDomUtils = this['metal']['IncrementalDomUtils'];
 
 	/**
   * Provides helpers for capturing children elements from incremental dom calls,
@@ -12952,7 +12952,7 @@ babelHelpers;
   */
 	IncrementalDomChildren.CHILD_OWNER = '__metalChildOwner';
 
-	this.metal.IncrementalDomChildren = IncrementalDomChildren;
+	this['metal']['IncrementalDomChildren'] = IncrementalDomChildren;
 }).call(this);
 'use strict';
 
@@ -13011,21 +13011,21 @@ babelHelpers;
 		return IncrementalDomUnusedComponents;
 	}();
 
-	this.metal.IncrementalDomUnusedComponents = IncrementalDomUnusedComponents;
+	this['metal']['IncrementalDomUnusedComponents'] = IncrementalDomUnusedComponents;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metalNamed.metal.core;
-	var object = this.metalNamed.metal.object;
-	var dom = this.metal.dom;
-	var Component = this.metalNamed.component.Component;
-	var ComponentRegistry = this.metalNamed.component.ComponentRegistry;
-	var ComponentRenderer = this.metalNamed.component.ComponentRenderer;
-	var IncrementalDomAop = this.metal.IncrementalDomAop;
-	var IncrementalDomChildren = this.metal.IncrementalDomChildren;
-	var IncrementalDomUnusedComponents = this.metal.IncrementalDomUnusedComponents;
-	var IncrementalDomUtils = this.metal.IncrementalDomUtils;
+	var core = this['metalNamed']['metal']['core'];
+	var object = this['metalNamed']['metal']['object'];
+	var dom = this['metal']['dom'];
+	var Component = this['metalNamed']['component']['Component'];
+	var ComponentRegistry = this['metalNamed']['component']['ComponentRegistry'];
+	var ComponentRenderer = this['metalNamed']['component']['ComponentRenderer'];
+	var IncrementalDomAop = this['metal']['IncrementalDomAop'];
+	var IncrementalDomChildren = this['metal']['IncrementalDomChildren'];
+	var IncrementalDomUnusedComponents = this['metal']['IncrementalDomUnusedComponents'];
+	var IncrementalDomUtils = this['metal']['IncrementalDomUtils'];
 
 	/**
   * Class responsible for rendering components via incremental dom.
@@ -13846,7 +13846,7 @@ babelHelpers;
 
 	IncrementalDomRenderer.LISTENER_REGEX = /^(?:on([A-Z]\w+))|(?:data-on(\w+))$/;
 
-	this.metal.IncrementalDomRenderer = IncrementalDomRenderer;
+	this['metal']['IncrementalDomRenderer'] = IncrementalDomRenderer;
 }).call(this);
 'use strict';
 
@@ -16116,6 +16116,126 @@ babelHelpers;
     goog.string.ALL_RE_ = goog.string.DETECT_DOUBLE_ESCAPING ? /[\x00&<>"'e]/ : /[\x00&<>"']/;
 
     /**
+     * Unescapes an HTML string.
+     *
+     * @param {string} str The string to unescape.
+     * @return {string} An unescaped copy of {@code str}.
+     */
+    goog.string.unescapeEntities = function (str) {
+      if (goog.string.contains(str, '&')) {
+        // We are careful not to use a DOM if we do not have one or we explicitly
+        // requested non-DOM html unescaping.
+        if (!goog.string.FORCE_NON_DOM_HTML_UNESCAPING && 'document' in goog.global) {
+          return goog.string.unescapeEntitiesUsingDom_(str);
+        } else {
+          // Fall back on pure XML entities
+          return goog.string.unescapePureXmlEntities_(str);
+        }
+      }
+      return str;
+    };
+
+    /**
+     * Unescapes an HTML string using a DOM to resolve non-XML, non-numeric
+     * entities. This function is XSS-safe and whitespace-preserving.
+     * @private
+     * @param {string} str The string to unescape.
+     * @param {Document=} opt_document An optional document to use for creating
+     *     elements. If this is not specified then the default window.document
+     *     will be used.
+     * @return {string} The unescaped {@code str} string.
+     */
+    goog.string.unescapeEntitiesUsingDom_ = function (str, opt_document) {
+      /** @type {!Object<string, string>} */
+      var seen = { '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"' };
+      var div;
+      if (opt_document) {
+        div = opt_document.createElement('div');
+      } else {
+        div = goog.global.document.createElement('div');
+      }
+      // Match as many valid entity characters as possible. If the actual entity
+      // happens to be shorter, it will still work as innerHTML will return the
+      // trailing characters unchanged. Since the entity characters do not include
+      // open angle bracket, there is no chance of XSS from the innerHTML use.
+      // Since no whitespace is passed to innerHTML, whitespace is preserved.
+      return str.replace(goog.string.HTML_ENTITY_PATTERN_, function (s, entity) {
+        // Check for cached entity.
+        var value = seen[s];
+        if (value) {
+          return value;
+        }
+        // Check for numeric entity.
+        if (entity.charAt(0) == '#') {
+          // Prefix with 0 so that hex entities (e.g. &#x10) parse as hex numbers.
+          var n = Number('0' + entity.substr(1));
+          if (!isNaN(n)) {
+            value = String.fromCharCode(n);
+          }
+        }
+        // Fall back to innerHTML otherwise.
+        if (!value) {
+          // Append a non-entity character to avoid a bug in Webkit that parses
+          // an invalid entity at the end of innerHTML text as the empty string.
+          div.innerHTML = s + ' ';
+          // Then remove the trailing character from the result.
+          value = div.firstChild.nodeValue.slice(0, -1);
+        }
+        // Cache and return.
+        return seen[s] = value;
+      });
+    };
+
+    /**
+     * Unescapes XML entities.
+     * @private
+     * @param {string} str The string to unescape.
+     * @return {string} An unescaped copy of {@code str}.
+     */
+    goog.string.unescapePureXmlEntities_ = function (str) {
+      return str.replace(/&([^;]+);/g, function (s, entity) {
+        switch (entity) {
+          case 'amp':
+            return '&';
+          case 'lt':
+            return '<';
+          case 'gt':
+            return '>';
+          case 'quot':
+            return '"';
+          default:
+            if (entity.charAt(0) == '#') {
+              // Prefix with 0 so that hex entities (e.g. &#x10) parse as hex.
+              var n = Number('0' + entity.substr(1));
+              if (!isNaN(n)) {
+                return String.fromCharCode(n);
+              }
+            }
+            // For invalid entities we just return the entity
+            return s;
+        }
+      });
+    };
+
+    /**
+     * Regular expression that matches an HTML entity.
+     * See also HTML5: Tokenization / Tokenizing character references.
+     * @private
+     * @type {!RegExp}
+     */
+    goog.string.HTML_ENTITY_PATTERN_ = /&([^;\s<&]+);?/g;
+
+    /**
+     * Determines whether a string contains a substring.
+     * @param {string} str The string to search.
+     * @param {string} subString The substring to search for.
+     * @return {boolean} Whether {@code str} contains {@code subString}.
+     */
+    goog.string.contains = function (str, subString) {
+      return str.indexOf(subString) != -1;
+    };
+
+    /**
      * Escapes double quote '"' and single quote '\'' characters in addition to
      * '&', '<', and '>' so that a string can be included in an HTML tag attribute
      * value within double or single quotes.
@@ -16378,15 +16498,15 @@ babelHelpers;
      */
     goog.i18n.bidi.Format = {
       /** Unicode "Left-To-Right Embedding" (LRE) character. */
-      LRE: '‪',
+      LRE: '\u202A',
       /** Unicode "Right-To-Left Embedding" (RLE) character. */
-      RLE: '‫',
+      RLE: '\u202B',
       /** Unicode "Pop Directional Formatting" (PDF) character. */
-      PDF: '‬',
+      PDF: '\u202C',
       /** Unicode "Left-To-Right Mark" (LRM) character. */
-      LRM: '‎',
+      LRM: '\u200E',
       /** Unicode "Right-To-Left Mark" (RLM) character. */
-      RLM: '‏'
+      RLM: '\u200F'
     };
 
     /**
@@ -16470,7 +16590,7 @@ babelHelpers;
      * @type {string}
      * @private
      */
-    goog.i18n.bidi.ltrChars_ = 'A-Za-zÀ-ÖØ-öø-ʸ̀-֐ࠀ-῿' + '‎Ⰰ-﬜︀-﹯﻽-￿';
+    goog.i18n.bidi.ltrChars_ = 'A-Za-z\xC0-\xD6\xD8-\xF6\xF8-\u02B8\u0300-\u0590\u0800-\u1FFF' + '\u200E\u2C00-\uFB1C\uFE00-\uFE6F\uFEFD-\uFFFF';
 
     /**
      * A practical pattern to identify strong RTL character. This pattern is not
@@ -16479,7 +16599,7 @@ babelHelpers;
      * @type {string}
      * @private
      */
-    goog.i18n.bidi.rtlChars_ = '֑-ۯۺ-߿‏יִ-﷿ﹰ-ﻼ';
+    goog.i18n.bidi.rtlChars_ = '\u0591-\u06EF\u06FA-\u07FF\u200F\uFB1D-\uFDFF\uFE70-\uFEFC';
 
     /**
      * Simplified regular expression for an HTML tag (opening or closing) or an HTML
@@ -16921,7 +17041,7 @@ babelHelpers;
      * @return {string} Processed string with double/single quote replaced.
      */
     goog.i18n.bidi.normalizeHebrewQuote = function (str) {
-      return str.replace(goog.i18n.bidi.doubleQuoteSubstituteRe_, '$1״').replace(goog.i18n.bidi.singleQuoteSubstituteRe_, '$1׳');
+      return str.replace(goog.i18n.bidi.doubleQuoteSubstituteRe_, '$1\u05F4').replace(goog.i18n.bidi.singleQuoteSubstituteRe_, '$1\u05F3');
     };
 
     /**
@@ -18430,7 +18550,11 @@ babelHelpers;
 				tagName = tagName.toLowerCase();
 
 				if (block[tagName]) {
-					while (stack.last() && inline[stack.last()]) {
+					// Close last tag if it's inline, except if it's a "span" (since people
+					// usually add anything they want to spans, and browsers allow it).
+					// Note: this exception for "span" was added manually (i.e. it's not
+					// present in the original code).
+					while (stack.last() && inline[stack.last()] && stack.last() !== 'span') {
 						parseEndTag("", stack.last());
 					}
 				}
@@ -18551,7 +18675,7 @@ babelHelpers;
     });
   }
 
-  this.metal.unescape = unescape;
+  this['metal']['unescape'] = unescape;
 
   /**
    * Regular expression that matches an HTML entity.
@@ -18563,7 +18687,7 @@ babelHelpers;
 'use strict';
 
 (function () {
-	var unescape = this.metal.unescape;
+	var unescape = this['metal']['unescape'];
 
 
 	var parser_;
@@ -18647,13 +18771,13 @@ babelHelpers;
 		return HTML2IncDom;
 	}();
 
-	this.metal.HTML2IncDom = HTML2IncDom;
+	this['metal']['HTML2IncDom'] = HTML2IncDom;
 }).call(this);
 'use strict';
 
 (function () {
-  var HTML2IncDom = this.metal.HTML2IncDom;
-  this.metal.withParser = HTML2IncDom;
+  var HTML2IncDom = this['metal']['HTML2IncDom'];
+  this['metal']['withParser'] = HTML2IncDom;
 }).call(this);
 'use strict';
 
@@ -18736,17 +18860,17 @@ babelHelpers;
 		}
 	};
 
-	this.metal.SoyAop = SoyAop;
+	this['metal']['SoyAop'] = SoyAop;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metalNamed.metal.core;
-	var object = this.metalNamed.metal.object;
-	var ComponentRegistry = this.metalNamed.component.ComponentRegistry;
-	var HTML2IncDom = this.metal.withParser;
-	var IncrementalDomRenderer = this.metal.IncrementalDomRenderer;
-	var SoyAop = this.metal.SoyAop;
+	var core = this['metalNamed']['metal']['core'];
+	var object = this['metalNamed']['metal']['object'];
+	var ComponentRegistry = this['metalNamed']['component']['ComponentRegistry'];
+	var HTML2IncDom = this['metal']['withParser'];
+	var IncrementalDomRenderer = this['metal']['IncrementalDomRenderer'];
+	var SoyAop = this['metal']['SoyAop'];
 
 	// The injected data that will be passed to soy templates.
 
@@ -18949,7 +19073,7 @@ babelHelpers;
 		}, {
 			key: 'handleInterceptedCall_',
 			value: function handleInterceptedCall_(originalFn) {
-				var opt_data = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+				var opt_data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
 				var args = [originalFn.componentCtor, null, []];
 				for (var key in opt_data) {
@@ -18960,7 +19084,7 @@ babelHelpers;
 		}, {
 			key: 'register',
 			value: function register(componentCtor, templates) {
-				var mainTemplate = arguments.length <= 2 || arguments[2] === undefined ? 'render' : arguments[2];
+				var mainTemplate = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'render';
 
 				componentCtor.RENDERER = Soy;
 				componentCtor.TEMPLATE = SoyAop.getOriginalFn(templates[mainTemplate]);
@@ -19002,17 +19126,17 @@ babelHelpers;
 		return Soy;
 	}(IncrementalDomRenderer);
 
-	this.metal.Soy = Soy;
-	this.metalNamed.Soy = this.metalNamed.Soy || {};
-	this.metalNamed.Soy.Soy = Soy;
-	this.metalNamed.Soy.SoyAop = SoyAop;
+	this['metal']['Soy'] = Soy;
+	this['metalNamed']['Soy'] = this['metalNamed']['Soy'] || {};
+	this['metalNamed']['Soy']['Soy'] = Soy;
+	this['metalNamed']['Soy']['SoyAop'] = SoyAop;
 }).call(this);
 'use strict';
 
 (function () {
   /* jshint ignore:start */
-  var Component = this.metal.Component;
-  var Soy = this.metal.Soy;
+  var Component = this['metal']['Component'];
+  var Soy = this['metal']['Soy'];
 
   var templates;
   goog.loadModule(function (exports) {
@@ -19076,7 +19200,7 @@ babelHelpers;
       if (opt_data.dismissible) {
         ie_open('button', null, null, 'type', 'button', 'class', 'close', 'aria-label', 'Close', 'data-onclick', 'toggle');
         ie_open('span', null, null, 'aria-hidden', 'true');
-        itext('×');
+        itext('\xD7');
         ie_close('span');
         ie_close('button');
       }
@@ -19104,22 +19228,22 @@ babelHelpers;
   }(Component);
 
   Soy.register(Alert, templates);
-  this.metal.Alert = templates;
-  this.metalNamed.Alert = this.metalNamed.Alert || {};
-  this.metalNamed.Alert.Alert = Alert;
-  this.metalNamed.Alert.templates = templates;
+  this['metal']['Alert'] = templates;
+  this['metalNamed']['Alert'] = this['metalNamed']['Alert'] || {};
+  this['metalNamed']['Alert']['Alert'] = Alert;
+  this['metalNamed']['Alert']['templates'] = templates;
   /* jshint ignore:end */
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metalNamed.metal.core;
-	var dom = this.metal.dom;
-	var Anim = this.metal.Anim;
-	var Component = this.metal.component;
-	var EventHandler = this.metalNamed.events.EventHandler;
-	var Soy = this.metal.Soy;
-	var templates = this.metal.Alert;
+	var core = this['metalNamed']['metal']['core'];
+	var dom = this['metal']['dom'];
+	var Anim = this['metal']['Anim'];
+	var Component = this['metal']['component'];
+	var EventHandler = this['metalNamed']['events']['EventHandler'];
+	var Soy = this['metal']['Soy'];
+	var templates = this['metal']['Alert'];
 
 	/**
   * Alert component.
@@ -19387,7 +19511,7 @@ babelHelpers;
 		}
 	};
 
-	this.metal.Alert = Alert;
+	this['metal']['Alert'] = Alert;
 }).call(this);
 'use strict';
 
@@ -19416,19 +19540,19 @@ babelHelpers;
 		clearTimeout(debounced.id);
 	}
 
-	this.metal.debounce = debounce;
-	this.metalNamed.debounce = this.metalNamed.debounce || {};
-	this.metalNamed.debounce.cancelDebounce = cancelDebounce;
-	this.metalNamed.debounce.debounce = debounce;
+	this['metal']['debounce'] = debounce;
+	this['metalNamed']['debounce'] = this['metalNamed']['debounce'] || {};
+	this['metalNamed']['debounce']['cancelDebounce'] = cancelDebounce;
+	this['metalNamed']['debounce']['debounce'] = debounce;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metal.metal;
-	var dom = this.metal.dom;
-	var CancellablePromise = this.metal.Promise;
-	var Component = this.metal.component;
-	var EventHandler = this.metalNamed.events.EventHandler;
+	var core = this['metal']['metal'];
+	var dom = this['metal']['dom'];
+	var CancellablePromise = this['metal']['Promise'];
+	var Component = this['metal']['component'];
+	var EventHandler = this['metalNamed']['events']['EventHandler'];
 
 	/*
   * AutocompleteBase component.
@@ -19604,14 +19728,14 @@ babelHelpers;
 		}
 	};
 
-	this.metal.AutocompleteBase = AutocompleteBase;
+	this['metal']['AutocompleteBase'] = AutocompleteBase;
 }).call(this);
 'use strict';
 
 (function () {
   /* jshint ignore:start */
-  var Component = this.metal.component;
-  var Soy = this.metal.Soy;
+  var Component = this['metal']['component'];
+  var Soy = this['metal']['Soy'];
 
   var templates;
   goog.loadModule(function (exports) {
@@ -19741,19 +19865,19 @@ babelHelpers;
   }(Component);
 
   Soy.register(ListItem, templates);
-  this.metalNamed.ListItem = this.metalNamed.ListItem || {};
-  this.metalNamed.ListItem.ListItem = ListItem;
-  this.metalNamed.ListItem.templates = templates;
-  this.metal.ListItem = templates;
+  this['metalNamed']['ListItem'] = this['metalNamed']['ListItem'] || {};
+  this['metalNamed']['ListItem']['ListItem'] = ListItem;
+  this['metalNamed']['ListItem']['templates'] = templates;
+  this['metal']['ListItem'] = templates;
   /* jshint ignore:end */
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metal.metal;
-	var Component = this.metal.component;
-	var Soy = this.metal.Soy;
-	var templates = this.metal.ListItem;
+	var core = this['metal']['metal'];
+	var Component = this['metal']['component'];
+	var Soy = this['metal']['Soy'];
+	var templates = this['metal']['ListItem'];
 
 	/**
   * List component.
@@ -19820,14 +19944,14 @@ babelHelpers;
 		}
 	};
 
-	this.metal.ListItem = ListItem;
+	this['metal']['ListItem'] = ListItem;
 }).call(this);
 'use strict';
 
 (function () {
   /* jshint ignore:start */
-  var Component = this.metal.component;
-  var Soy = this.metal.Soy;
+  var Component = this['metal']['component'];
+  var Soy = this['metal']['Soy'];
 
   var templates;
   goog.loadModule(function (exports) {
@@ -19916,19 +20040,19 @@ babelHelpers;
   }(Component);
 
   Soy.register(List, templates);
-  this.metalNamed.List = this.metalNamed.List || {};
-  this.metalNamed.List.List = List;
-  this.metalNamed.List.templates = templates;
-  this.metal.List = templates;
+  this['metalNamed']['List'] = this['metalNamed']['List'] || {};
+  this['metalNamed']['List']['List'] = List;
+  this['metalNamed']['List']['templates'] = templates;
+  this['metal']['List'] = templates;
   /* jshint ignore:end */
 }).call(this);
 'use strict';
 
 (function () {
-	var dom = this.metal.dom;
-	var Component = this.metal.component;
-	var Soy = this.metal.Soy;
-	var templates = this.metal.List;
+	var dom = this['metal']['dom'];
+	var Component = this['metal']['component'];
+	var Soy = this['metal']['Soy'];
+	var templates = this['metal']['List'];
 
 	/**
   * List component.
@@ -19999,14 +20123,14 @@ babelHelpers;
 		}
 	};
 
-	this.metal.List = List;
+	this['metal']['List'] = List;
 }).call(this);
 'use strict';
 
 (function () {
   /* jshint ignore:start */
-  var Component = this.metal.component;
-  var Soy = this.metal.Soy;
+  var Component = this['metal']['component'];
+  var Soy = this['metal']['Soy'];
 
   var templates;
   goog.loadModule(function (exports) {
@@ -20076,23 +20200,23 @@ babelHelpers;
   }(Component);
 
   Soy.register(Autocomplete, templates);
-  this.metalNamed.Autocomplete = this.metalNamed.Autocomplete || {};
-  this.metalNamed.Autocomplete.Autocomplete = Autocomplete;
-  this.metalNamed.Autocomplete.templates = templates;
-  this.metal.Autocomplete = templates;
+  this['metalNamed']['Autocomplete'] = this['metalNamed']['Autocomplete'] || {};
+  this['metalNamed']['Autocomplete']['Autocomplete'] = Autocomplete;
+  this['metalNamed']['Autocomplete']['templates'] = templates;
+  this['metal']['Autocomplete'] = templates;
   /* jshint ignore:end */
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metal.metal;
-	var debounce = this.metal.debounce;
-	var dom = this.metal.dom;
-	var Promise = this.metalNamed.Promise.CancellablePromise;
-	var Align = this.metalNamed.position.Align;
-	var AutocompleteBase = this.metal.AutocompleteBase;
-	var Soy = this.metal.Soy;
-	var templates = this.metal.Autocomplete;
+	var core = this['metal']['metal'];
+	var debounce = this['metal']['debounce'];
+	var dom = this['metal']['dom'];
+	var Promise = this['metalNamed']['Promise']['CancellablePromise'];
+	var Align = this['metalNamed']['position']['Align'];
+	var AutocompleteBase = this['metal']['AutocompleteBase'];
+	var Soy = this['metal']['Soy'];
+	var templates = this['metal']['Autocomplete'];
 
 	/*
   * Autocomplete component.
@@ -20309,24 +20433,24 @@ babelHelpers;
 		}
 	};
 
-	this.metal.Autocomplete = Autocomplete;
+	this['metal']['Autocomplete'] = Autocomplete;
 }).call(this);
 'use strict';
 
 (function () {
-  var Autocomplete = this.metal.Autocomplete;
-  var AutocompleteBase = this.metal.AutocompleteBase;
-  this.metal.autocomplete = Autocomplete;
-  this.metalNamed.autocomplete = this.metalNamed.autocomplete || {};
-  this.metalNamed.autocomplete.Autocomplete = Autocomplete;
-  this.metalNamed.autocomplete.AutocompleteBase = AutocompleteBase;
+  var Autocomplete = this['metal']['Autocomplete'];
+  var AutocompleteBase = this['metal']['AutocompleteBase'];
+  this['metal']['autocomplete'] = Autocomplete;
+  this['metalNamed']['autocomplete'] = this['metalNamed']['autocomplete'] || {};
+  this['metalNamed']['autocomplete']['Autocomplete'] = Autocomplete;
+  this['metalNamed']['autocomplete']['AutocompleteBase'] = AutocompleteBase;
 }).call(this);
 'use strict';
 
 (function () {
   /* jshint ignore:start */
-  var Component = this.metal.component;
-  var Soy = this.metal.Soy;
+  var Component = this['metal']['component'];
+  var Soy = this['metal']['Soy'];
 
   var templates;
   goog.loadModule(function (exports) {
@@ -20433,19 +20557,19 @@ babelHelpers;
   }(Component);
 
   Soy.register(ReadingProgress, templates);
-  this.metalNamed.ReadingProgress = this.metalNamed.ReadingProgress || {};
-  this.metalNamed.ReadingProgress.ReadingProgress = ReadingProgress;
-  this.metalNamed.ReadingProgress.templates = templates;
-  this.metal.ReadingProgress = templates;
+  this['metalNamed']['ReadingProgress'] = this['metalNamed']['ReadingProgress'] || {};
+  this['metalNamed']['ReadingProgress']['ReadingProgress'] = ReadingProgress;
+  this['metalNamed']['ReadingProgress']['templates'] = templates;
+  this['metal']['ReadingProgress'] = templates;
   /* jshint ignore:end */
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metal.metal;
-	var dom = this.metal.dom;
-	var Position = this.metal.position;
-	var State = this.metal.State;
+	var core = this['metal']['metal'];
+	var dom = this['metal']['dom'];
+	var Position = this['metal']['position'];
+	var State = this['metal']['State'];
 
 	/**
   * Scrollspy utility.
@@ -20777,14 +20901,14 @@ babelHelpers;
 		}
 	};
 
-	this.metal.Scrollspy = Scrollspy;
+	this['metal']['Scrollspy'] = Scrollspy;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metal.metal;
-	var dom = this.metal.dom;
-	var Scrollspy = this.metal.Scrollspy;
+	var core = this['metal']['metal'];
+	var dom = this['metal']['dom'];
+	var Scrollspy = this['metal']['Scrollspy'];
 
 	/**
   * A Scrollspy implementation that also tracks the percentage of the text that
@@ -20930,17 +21054,17 @@ babelHelpers;
 		}
 	};
 
-	this.metal.ReadingProgressTracker = ReadingProgressTracker;
+	this['metal']['ReadingProgressTracker'] = ReadingProgressTracker;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metalNamed.metal.core;
-	var object = this.metalNamed.metal.object;
-	var templates = this.metal.ReadingProgress;
-	var Component = this.metal.component;
-	var ReadingProgressTracker = this.metal.ReadingProgressTracker;
-	var Soy = this.metal.Soy;
+	var core = this['metalNamed']['metal']['core'];
+	var object = this['metalNamed']['metal']['object'];
+	var templates = this['metal']['ReadingProgress'];
+	var Component = this['metal']['component'];
+	var ReadingProgressTracker = this['metal']['ReadingProgressTracker'];
+	var Soy = this['metal']['Soy'];
 
 	/**
   * This components renders a list of links to contents on the page. These links
@@ -21102,15 +21226,15 @@ babelHelpers;
 		}
 	};
 
-	this.metal.ReadingProgress = ReadingProgress;
+	this['metal']['ReadingProgress'] = ReadingProgress;
 }).call(this);
 'use strict';
 
 (function () {
-	var core = this.metal.metal;
-	var dom = this.metal.dom;
-	var EventHandler = this.metalNamed.events.EventHandler;
-	var State = this.metal.State;
+	var core = this['metal']['metal'];
+	var dom = this['metal']['dom'];
+	var EventHandler = this['metalNamed']['events']['EventHandler'];
+	var State = this['metal']['State'];
 
 	/**
   * Toggler component.
@@ -21299,7 +21423,7 @@ babelHelpers;
   */
 	Toggler.CSS_HEADER_EXPANDED = 'toggler-header-expanded';
 
-	this.metal.Toggler = Toggler;
+	this['metal']['Toggler'] = Toggler;
 }).call(this);
 'use strict';
 
