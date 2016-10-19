@@ -4,6 +4,16 @@
 	position: relative;
 }
 
+.topbar.topbar-docs .wedeploy-logo .alpha-container {
+	@media	(min-width: 320px) {
+		display: none;
+	}
+
+	@media	(min-width: 960px) {
+		display: block;
+	}
+}
+
 .docs-nav-container {
 	position: relative;
 	display: none;
@@ -398,16 +408,46 @@
 
 .topbar-docs .topbar-list {
 	max-width: 100%;
+
+
+
+	.topbar-item {
+
+		@media	(max-width: 599px) {
+			margin: 0;
+			&:not(.login) {
+				display: none;
+			}
+		}
+
+		@media	(min-width: 600px) {
+			margin: 0 12px;
+			display: inline-block;
+		}
+
+		@media	(min-width: 720px) {
+			margin: 0 10px;
+		}
+
+		@media	(min-width: 1024px) {
+			margin: 0 16px;
+		}
+
+		@media	(min-width: 1280px) {
+			margin: 0 20px;
+		}
+	}
+
 	.topbar-link {
 		white-space: nowrap;
 
 		font-family: $font-family-secondary-bold;
-    font-size: 15px;
-    color: rgba($primary, 0.6);
-	}
+		font-size: 15px;
+		color: rgba($primary, 0.6);
 
-	@media	(max-width: 600px) {
-		display: none;
+		&.topbar-link-selected {
+			color: $accent;
+		}
 	}
 
 	.get-started {

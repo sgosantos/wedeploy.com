@@ -80,7 +80,7 @@ yesBtn.addEventListener('click', function() {
 
 function sendFeedback(liked) {
 	Launchpad
-		.url('http://liferay.io/docs/feedback/records')
+		.url('http://docs.wedeploy.com/feedback')
 		.post({
 			liked: liked,
 			url: window.location.href,

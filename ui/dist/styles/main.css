@@ -16632,6 +16632,17 @@ input:-webkit-autofill {
     @media (max-width: 600px) {
       #topbar .topbar .topbar-list {
         display: none; } }
+    @media (min-width: 600px) {
+      #topbar .topbar .topbar-list .topbar-item {
+        margin: 0 16px; } }
+    @media (min-width: 720px) {
+      #topbar .topbar .topbar-list .topbar-item {
+        margin: 0 12px; } }
+    @media (min-width: 1024px) {
+      #topbar .topbar .topbar-list .topbar-item {
+        margin: 0 20px; } }
+    #topbar .topbar .topbar-list .topbar-item:last-child {
+      margin-right: 0px; }
     @media (max-width: 720px) {
       #topbar .topbar .topbar-list .get-started {
         display: none; } }
@@ -19667,6 +19678,14 @@ li.feature {
 .docs .topbar.topbar-large .wedeploy-logo {
   position: relative; }
 
+@media (min-width: 320px) {
+  .topbar.topbar-docs .wedeploy-logo .alpha-container {
+    display: none; } }
+
+@media (min-width: 960px) {
+  .topbar.topbar-docs .wedeploy-logo .alpha-container {
+    display: block; } }
+
 .docs-nav-container {
   position: relative;
   display: none; }
@@ -19996,14 +20015,31 @@ li.feature {
 
 .topbar-docs .topbar-list {
   max-width: 100%; }
+  @media (max-width: 599px) {
+    .topbar-docs .topbar-list .topbar-item {
+      margin: 0; }
+      .topbar-docs .topbar-list .topbar-item:not(.login) {
+        display: none; } }
+  @media (min-width: 600px) {
+    .topbar-docs .topbar-list .topbar-item {
+      margin: 0 12px;
+      display: inline-block; } }
+  @media (min-width: 720px) {
+    .topbar-docs .topbar-list .topbar-item {
+      margin: 0 10px; } }
+  @media (min-width: 1024px) {
+    .topbar-docs .topbar-list .topbar-item {
+      margin: 0 16px; } }
+  @media (min-width: 1280px) {
+    .topbar-docs .topbar-list .topbar-item {
+      margin: 0 20px; } }
   .topbar-docs .topbar-list .topbar-link {
     white-space: nowrap;
     font-family: "Galano Bold", sans-serif;
     font-size: 15px;
     color: rgba(14, 20, 26, 0.6); }
-  @media (max-width: 600px) {
-    .topbar-docs .topbar-list {
-      display: none; } }
+    .topbar-docs .topbar-list .topbar-link.topbar-link-selected {
+      color: #00d46a; }
   @media (max-width: 720px) {
     .topbar-docs .topbar-list .get-started {
       display: none; } }
