@@ -90,9 +90,6 @@
 				<a href="/docs" class="topbar-link topbar-link-selected">Documentation</a>
 			</li>
 			<li class="topbar-item">
-				<a href="//chat.wedeploy.com/" class="topbar-link">Chat</a>
-			</li>
-			<li class="topbar-item login">
 				<a href="//dashboard.wedeploy.com/login" class="topbar-link">Log in</a>
 			</li>
 			<li class="topbar-item get-started">
@@ -103,7 +100,7 @@
 	
 
 	<main class="docs guide-topic guide-topic-intro">
-		<nav class="sidebar">
+		<nav class="sidebar sidebar-inverse">
 			<a class="sidebar-header toggler-header-collapsed">
 				<span class="sidebar-icon icon-16-menu"></span>
 				<span>Docs Menu</span>
@@ -148,13 +145,13 @@
 							<a class="sidebar-link " href="/docs/intro/configuration-files.html">
 								<span>Configuration Files</span>
 							</a>
-							<a class="sidebar-link " href="/docs/intro/custom-domains.html">
+							<a class="sidebar-link sidebar-link-selected" href="/docs/intro/custom-domains.html">
 								<span>Custom Domains</span>
 							</a>
 							<a class="sidebar-link " href="/docs/intro/using-the-command-line.html">
 								<span>Using the Command-line</span>
 							</a>
-							<a class="sidebar-link sidebar-link-selected" href="/docs/intro/using-the-api-client.html">
+							<a class="sidebar-link " href="/docs/intro/using-the-api-client.html">
 								<span>Using the API Client</span>
 							</a>
 						</li>
@@ -300,9 +297,6 @@
 				<a href="/docs" class="topbar-link topbar-link-selected">Documentation</a>
 			</li>
 			<li class="topbar-item">
-				<a href="//chat.wedeploy.com/" class="topbar-link">Chat</a>
-			</li>
-			<li class="topbar-item login">
 				<a href="//dashboard.wedeploy.com/login" class="topbar-link">Log in</a>
 			</li>
 			<li class="topbar-item get-started">
@@ -321,13 +315,82 @@
 					
 
 					<div class="docs-content col-xs-16 col-md-9">
-						<h1 id="using-the-api-client">Using the API Client</h1>
-<h6 id="make-requests-to-wedeploy-using-a-standardize-interface-">Make requests to WeDeploy using a standardize interface.</h6>
-<article id="installation">
-<h2 id="installation">Installation</h2>
-<p>In order to send/receive requests to/from WeDeploy, we need to include the JavaScript API Client. This library provides a secure and reliable communication channel with WeDeploy. We can do that by simply adding a script tag in a HTML file:</p>
-<pre><code class="lang-html">&lt;script src=&quot;http://cdn.wedeploy.com/api/latest/wedeploy.js&quot;&gt;&lt;/script&gt;
-</code></pre>
+						<h1 id="custom-domains">Custom Domains</h1>
+<h6 id="this-is-an-overview-of-how-wedeploy-manage-custom-domains-for-your-projects-">This is an overview of how WeDeploy manage custom domains for your projects.</h6>
+<article id="introduction">
+<h2 id="introduction">Introduction</h2>
+<p>In order to make your app accessible right away, WeDeploy makes any project accessible via its WeDeploy Domain, which has the form <code>&lt;serviceID&gt;.&lt;projectID&gt;.wedeploy.io</code>. For example, you&#39;re able to access a project named <code>project1</code> with a service named <code>web</code> with <code>web.project1.wedeploy.io</code>.</p>
+</article>
+<article id="configuring-custom-domains">
+<h2 id="configuring-custom-domains">Configuring custom domains</h2>
+<p>To make a project accessible via one or more non-WeDeploy domain names, you must add custom domain(s) to your project configuration as described below.</p>
+<ul>
+<li><p>1) After create a project on the dashboard. Go to the Project Settings Page.</p>
+</li>
+<li><p>2) On custom domain session, add the custom domains related to the project.</p>
+</li>
+<li><p>3) Click in Update Project.</p>
+</li>
+<li><p>4) Update the domain DNS to point to the <code>Project WeDeploy Domain</code> (<code>&lt;projectID&gt;.wedeploy.io</code>).</p>
+</li>
+</ul>
+</article>
+<article id="configuring-dns-for-custom-domains">
+<h2 id="configuring-dns-for-custom-domains">Configuring DNS for custom Domains</h2>
+<p>After configuring the custom domains on the Project Settings, you must point your DNS provider to the <code>Project WeDeploy Domain</code>. You may configure the DNS as a new CNAME record with your DNS provider. Consult with your DNS provider for specific instructions to create CNAME records.</p>
+<table class="table">
+  <tr>
+    <td><code>CNAME</code></td> <td>www</td> <td>project1.wedeploy.io.</td>
+  </tr>
+  <tr>
+    <td><code>CNAME</code></td> <td>subdomain1</td> <td>project1.wedeploy.io.</td>
+  </tr>
+  <tr>
+    <td><code>CNAME</code></td> <td>subdomain2</td> <td>project2.wedeploy.io.</td>
+  </tr>
+  <tr>
+    <td><code>CNAME</code></td> <td>subdomain3</td> <td>project3.wedeploy.io.</td>
+  </tr>
+</table>
+
+</article>
+<article id="configuring-dns-for-custom-domains">
+<h2 id="custom-domains-for-services">Custom domains for services</h2>
+<p>If you need to use a custom domain with the same services name, you just need to create a custom domain with the same name of the service, after configuring a custom domain for your project.</p>
+<p>ex: <code>service1.project1.wedeploy.io =&gt; service1.mydomain.com</code></p>
+</article>
+<article id="wildcard-domain">
+<h2 id="wildcard-domain">Wildcard domain</h2>
+<p>Since you can have multiple services inside a project and Wdeploy automatically creates a subdomain for each service. Wildcard domains allow you to map any of all generated subdomains from the services with a single record.</p>
+<table class="table">
+  <tr>
+    <td><code>CNAME</code></td> <td>*</td> <td>project.wedeploy.io.</td>
+  </tr>
+</table>
+
+<p>Result:</p>
+<table class="table">
+  <tr>
+    <td>service1.project.wedeploy.io</td> <td>service1.mydomain.com</td>
+  </tr>
+  <tr>
+    <td>service2.project.wedeploy.io</td> <td>service2.mydomain.com</td>
+  </tr>
+  <tr>
+    <td>service3.project.wedeploy.io</td> <td>service3.mydomain.com</td>
+  </tr>
+  <tr>
+    <td>service4.project.wedeploy.io</td> <td>service4.mydomain.com</td>
+  </tr>
+</table>
+
+</article>
+<article id="rules-on-adding-custom-domains">
+<h2 id="rules-on-adding-custom-domains">Rules on adding custom domains</h2>
+<ul>
+<li>A domain should be used just in one project.</li>
+<li>A single project can have any number of domains.</li>
+</ul>
 </article>
 
 
@@ -341,7 +404,7 @@
 								<img src="/images/misc/octocat.png" alt="Octocat"v>
 							</div>
 							<div class="guide-github-text">
-								<p>Contribute to this Doc on Github! <a href="https://github.com/wedeploy/docs/edit/master/intro/using-the-api-client.md" class="docs-github-link" target="_blank">Edit this section</a>.</p>
+								<p>Contribute to this Doc on Github! <a href="https://github.com/wedeploy/docs/edit/master/intro/custom-domains.md" class="docs-github-link" target="_blank">Edit this section</a>.</p>
 							</div>
 						</div>
 					</div>
