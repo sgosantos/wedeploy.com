@@ -90,6 +90,9 @@
 				<a href="/docs" class="topbar-link topbar-link-selected">Documentation</a>
 			</li>
 			<li class="topbar-item">
+				<a href="//chat.wedeploy.com/" class="topbar-link">Chat</a>
+			</li>
+			<li class="topbar-item login">
 				<a href="//dashboard.wedeploy.com/login" class="topbar-link">Log in</a>
 			</li>
 			<li class="topbar-item get-started">
@@ -100,7 +103,7 @@
 	
 
 	<main class="docs guide-topic guide-topic-intro">
-		<nav class="sidebar sidebar-inverse">
+		<nav class="sidebar">
 			<a class="sidebar-header toggler-header-collapsed">
 				<span class="sidebar-icon icon-16-menu"></span>
 				<span>Docs Menu</span>
@@ -297,6 +300,9 @@
 				<a href="/docs" class="topbar-link topbar-link-selected">Documentation</a>
 			</li>
 			<li class="topbar-item">
+				<a href="//chat.wedeploy.com/" class="topbar-link">Chat</a>
+			</li>
+			<li class="topbar-item login">
 				<a href="//dashboard.wedeploy.com/login" class="topbar-link">Log in</a>
 			</li>
 			<li class="topbar-item get-started">
@@ -338,7 +344,7 @@
 <article id="configuring-dns-for-custom-domains">
 <h2 id="configuring-dns-for-custom-domains">Configuring DNS for custom Domains</h2>
 <p>After configuring the custom domains on the Project Settings, you must point your DNS provider to the <code>Project WeDeploy Domain</code>. You may configure the DNS as a new CNAME record with your DNS provider. Consult with your DNS provider for specific instructions to create CNAME records.</p>
-<table class="table">
+<table class="table no-header">
   <tr>
     <td><code>CNAME</code></td> <td>www</td> <td>project1.wedeploy.io.</td>
   </tr>
@@ -362,14 +368,14 @@
 <article id="wildcard-domain">
 <h2 id="wildcard-domain">Wildcard domain</h2>
 <p>Since you can have multiple services inside a project and Wdeploy automatically creates a subdomain for each service. Wildcard domains allow you to map any of all generated subdomains from the services with a single record.</p>
-<table class="table">
+<table class="table no-header">
   <tr>
     <td><code>CNAME</code></td> <td>*</td> <td>project.wedeploy.io.</td>
   </tr>
 </table>
 
 <p>Result:</p>
-<table class="table">
+<table class="table no-header">
   <tr>
     <td>service1.project.wedeploy.io</td> <td>service1.mydomain.com</td>
   </tr>
