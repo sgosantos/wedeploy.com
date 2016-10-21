@@ -341,9 +341,12 @@
 </article>
 <article id="configuring-dns-for-root-domains">
 <h2 id="configuring-dns-for-root-domains">Configuring DNS for root domains</h2>
-<p>Root domains doesn&#39;t have subdomain on its structure. You can add root domains on the same Project Settings Page used for domains with subdomains.
+##### Fix that
+<p>Root domains doesn&#39;t have subdomain on its structure. You can add root domains on the same project settings page used for domains with subdomains.
 Configuring your DNS provider for a root domain is similar to configuring a DNS provider for a CNAME. In this case, the type of record depends on the DNS provider.</p>
-<p>Point the A/CNAME entry for your root domain to the DNS Target, just as you would with a CNAME record:</p>
+<p>(use IP instead) #
+Point the A/CNAME entry for your root domain to the DNS Target, just as you would with a CNAME record:</p>
+Check domain IP
 <table class="table">
   <tr>
     <th>Record</th> <th>Name</th> <th>Project Target Domain</th>
@@ -353,6 +356,7 @@ Configuring your DNS provider for a root domain is similar to configuring a DNS 
   </tr>
 </table>
 
+<p><br></p>
 <p>In some DNS Providers such as Google domains, it just allow you to configure IPs for root domains. In this case you can:</p>
 <p>1) Go to your terminal and type <code>host &lt;projectID&gt;.wedeploy.io</code>.</p>
 <pre><code class="lang-text">&lt;projectID&gt;.wedeploy.io is an alias for wedeploy.com.
@@ -362,7 +366,7 @@ wedeploy.com has address 111.111.111.111
 <p>2) Use the API provided from <code>wedeploy.com</code> (111.111.111.111).</p>
 </article>
 <article id="configuring-dns-for-custom-domains">
-<h2 id="configuring-dns-for-custom-domains">Configuring DNS for custom domains</h2>
+<h2 id="configuring-dns-for-subdomains">Configuring DNS for subdomains</h2>
 <p>After configuring the custom domains on the Project Settings, you must point your DNS to the project WeDeploy domain. You can configure your subdomain as a new CNAME record with your DNS provider. If you&#39;re not sure about how to configure your subdomain as a CNAME record, visit your DNS provider documentation page.</p>
 <table class="table">
   <tr>
@@ -370,15 +374,6 @@ wedeploy.com has address 111.111.111.111
   </tr>
   <tr>
     <td><code>CNAME</code></td> <td><strong>www</strong>.mydomain.com</td> <td>project1.wedeploy.io.</td>
-  </tr>
-  <tr>
-    <td><code>CNAME</code></td> <td><strong>subdomain1</strong>.mydomain.com</td> <td>project1.wedeploy.io.</td>
-  </tr>
-  <tr>
-    <td><code>CNAME</code></td> <td><strong>subdomain2</strong>.mydomain.com</td> <td>project2.wedeploy.io.</td>
-  </tr>
-  <tr>
-    <td><code>CNAME</code></td> <td><strong>subdomain3</strong>.mydomain.com</td> <td>project3.wedeploy.io.</td>
   </tr>
 </table>
 
