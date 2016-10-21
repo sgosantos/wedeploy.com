@@ -354,6 +354,26 @@ function handleFailure(error) {
 }
 </code></pre>
 <p>Now every time the storage detects changes that affect the query you&#39;re watching, you will receive a changes notification with the response body you&#39;d receive if you had done an HTTP GET instead. Furthermore, every time this change leads to an HTTP error response, you&#39;ll receive the error object in a fail notification on the client.</p>
+<h2 id="getting-the-latest-changes">Getting the latest changes</h2>
+<p>The data service uses a query limit by default. In order to get always the latest new record, you would need to limit the query by 1 and order by <code>id desc</code>.</p>
+<pre><code class="lang-js">var data = WeDeploy.data(&#39;http://datademo.wedeploy.io&#39;);
+
+data.where(Filter.any(&#39;category&#39;, &#39;cinema&#39;))
+.where(Filter.distance(&#39;location&#39;, &#39;51.5031653,-0.1123051&#39;, &#39;1mi&#39;))
+.limit(1)
+.orderBy(&#39;id&#39;, &#39;desc&#39;)
+.watch(&#39;movies&#39;)
+.on(&#39;changes&#39;, doSomethingWithReceivedData)
+.on(&#39;fail&#39;, handleFailure);
+
+function doSomethingWithReceivedData(data) {
+  console.log(data);
+}
+
+function handleFailure(error) {
+  console.log(error);
+}
+</code></pre>
 </article>
 <h2 id="what-s-next-">What&#39;s Next?</h2>
 <ul>
