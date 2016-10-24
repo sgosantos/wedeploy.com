@@ -322,14 +322,15 @@
 
 					<div class="docs-content col-xs-16 col-md-9">
 						<h1 id="custom-domains">Custom Domains</h1>
-<h6 id="this-is-an-overview-of-how-wedeploy-manage-custom-domains-for-your-projects-">This is an overview of how WeDeploy manage custom domains for your projects.</h6>
+<h6 id="this-is-an-overview-of-how-wedeploy-manages-custom-domains-for-your-projects-">This is an overview of how WeDeploy manages custom domains for your projects.</h6>
 <article id="introduction">
 <h2 id="introduction">Introduction</h2>
-<p>In order to make your app accessible right away, WeDeploy makes any project accessible via its project domain, wich looks like <code>&lt;serviceID&gt;.&lt;projectID&gt;.wedeploy.io</code>. Let&#39;s say you have a project named <code>project</code> with a service named <code>web</code> the WeDeploy project domain would be <code>web.project.wedeploy.io</code>. Every project in WeDeploy supports one or many custom domains.</p>
+<p>To make your app accessible right away, WeDeploy makes any project accessible via its project domain, which looks like <code>&lt;serviceID&gt;.&lt;projectID&gt;.wedeploy.io</code>. Let&#39;s say you have a project named <code>project</code> with a service named <code>web</code> the WeDeploy project domain would be <code>web.project.wedeploy.io</code>. Every project in WeDeploy supports one or many custom domains.</p>
 </article>
 <article id="configuring-custom-domains">
 <h2 id="configuring-custom-domains">Configuring custom domains</h2>
-<p>To make a project accessible via one or more non-WeDeploy domain names, you must add custom domain(s) to your project configuration as described below.</p>
+<p>WeDeploy can help you to configure your own custom domain, like <code>http://mydomain.com</code> or <code>http://www.mydomain.com</code>.
+To make a project accessible via one or more non-WeDeploy domain names, you must add custom domain(s) to your project configuration as described below:</p>
 <ol class="list list--numeric">
   <li>After create a project on the <a href="http://dashboard.wedeploy.com">dashboard</a>. Go to the project settings page.</li>
   <li>On custom domain session, add the custom domains related to the project.</li>
@@ -341,12 +342,8 @@
 </article>
 <article id="configuring-dns-for-root-domains">
 <h2 id="configuring-dns-for-root-domains">Configuring DNS for root domains</h2>
-##### Fix that
-<p>Root domains doesn&#39;t have subdomain on its structure. You can add root domains on the same project settings page used for domains with subdomains.
-Configuring your DNS provider for a root domain is similar to configuring a DNS provider for a CNAME. In this case, the type of record depends on the DNS provider.</p>
-<p>(use IP instead) #
-Point the A/CNAME entry for your root domain to the DNS Target, just as you would with a CNAME record:</p>
-Check domain IP
+<p>A root domain is the highest level of hierarchy for the website you control, ex: <code>mydomain.com</code>. When you register a domain name, you are registering a root domain. This means you have the access to create subdomains and file structures all branching from that root domain.</p>
+<p>If your DNS provider allow you to use CNAME for root domains, you just need to Point the ALIAS (A) entry for your root domain as described below:</p>
 <table class="table">
   <tr>
     <th>Record</th> <th>Name</th> <th>Project Target Domain</th>
@@ -356,14 +353,16 @@ Check domain IP
   </tr>
 </table>
 
-<p><br></p>
-<p>In some DNS Providers such as Google domains, it just allow you to configure IPs for root domains. In this case you can:</p>
-<p>1) Go to your terminal and type <code>host &lt;projectID&gt;.wedeploy.io</code>.</p>
-<pre><code class="lang-text">&lt;projectID&gt;.wedeploy.io is an alias for wedeploy.com.
-wedeploy.com has address 111.111.111.111
-</code></pre>
-<p><br></p>
-<p>2) Use the API provided from <code>wedeploy.com</code> (111.111.111.111).</p>
+<p>In some DNS Providers, it just allows you to configure IPs for root domains. In that case, you can use the static IP provided by WeDeploy:</p>
+<table class="table">
+  <tr>
+    <th>Record</th> <th>Name</th> <th>Project Target Domain</th>
+  </tr>
+  <tr>
+    <td><code>ALIAS</code></td> <td><code>&lt;empty&gt;</code> or <code>@</code></td> <td><code>173.196.61.238</code></td>
+  </tr>
+</table>
+
 </article>
 <article id="configuring-dns-for-custom-domains">
 <h2 id="configuring-dns-for-subdomains">Configuring DNS for subdomains</h2>
@@ -379,7 +378,7 @@ wedeploy.com has address 111.111.111.111
 
 </article>
 <article id="wildcard-domain">
-<h2 id="wildcard-domain">Wildcard domain</h2>
+<h2 id="configuring-dns-for-wildcard-domain">Configuring DNS for Wildcard domain</h2>
 <p>Since you can have multiple services inside a project and WeDeploy automatically creates a subdomain for each service. Wildcard domains allow you to map any of all generated subdomains from the services with a single record.</p>
 <table class="table">
   <tr>
