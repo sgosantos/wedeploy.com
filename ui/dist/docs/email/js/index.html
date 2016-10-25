@@ -215,7 +215,7 @@
 								<span>Searching Data</span>
 							</a>
 							<a class="sidebar-link " href="/docs/email/js/real-time-feeds.html">
-								<span>Real-time feeds</span>
+								<span>Real-time Feeds</span>
 							</a>
 						</li>
 					</ul>
@@ -345,12 +345,12 @@
 </div>
 
 <article id="install-dependencies">
-<h2 id="install-dependencies">Install Dependencies</h2>
+<h2 id="install-dependencies">Install dependencies</h2>
 <p>This section assumes that you already have the <strong>WeDeploy CLI</strong> installed and <strong>Docker</strong> running. Make sure to <a href="/docs/intro/using-the-command-line.html">visit the installation guide</a> if you need help setting that up.</p>
 <p>We also feature code snippets using the API Client, <a href="/docs/intro/using-the-api-client.html">visit this guide</a> in order to start using it.</p>
 </article>
 <article id="running-locally">
-<h2 id="running-locally">Running Locally</h2>
+<h2 id="running-locally">Running locally</h2>
 <ol>
 <li><p>Start local infrastructure:</p>
 <pre><code class="lang-text">we run
@@ -372,7 +372,7 @@ cd boilerplate-email-js
 </ol>
 </article>
 <article id="deploying-to-the-cloud">
-<h2 id="deploying-to-the-cloud">Deploying to the Cloud</h2>
+<h2 id="deploying-to-the-cloud">Deploying to the cloud</h2>
 <ol>
 <li><a href="https://github.com/wedeploy/boilerplate-email/fork">Fork this repository</a>.</li>
 <li>Go to the <a href="http://dashboard.wedeploy.com">Dashboard</a>.</li>
@@ -393,7 +393,7 @@ cd boilerplate-email-js
 </ol>
 </article>
 <article id="sending-an-email">
-<h2 id="sending-an-email">Sending an Email</h2>
+<h2 id="sending-an-email">Sending an email</h2>
 <p>Now that we have our container up and running, it&#39;s time to start sending some emails. We can use the API Client to facilitate the process of sending requests to WeDeploy.</p>
 <p>In order to send emails, we have to make a <code>POST</code> request to <code>/emails</code> passing some required parameters like <code>from</code>, <code>to</code>, and <code>subject</code>:</p>
 <pre><code class="lang-js">WeDeploy
@@ -415,7 +415,7 @@ cd boilerplate-email-js
 <p>As a result, we&#39;ll receive an email ID. This doesn&#39;t indicate that the email was already sent, it actually says that it was added to the email queue. That&#39;s why we have another API to check the email status.</p>
 </article>
 <article id="checking-email-status">
-<h2 id="checking-an-email-status">Checking an Email Status</h2>
+<h2 id="checking-an-email-status">Checking an email status</h2>
 <p>In order to check if an email was sent or not, we can use the email ID from the previous example, e.g. <code>123</code>, and send a <code>GET</code> request to <code>/emails/123/status</code>.</p>
 <pre><code class="lang-js">WeDeploy
 .url(&#39;http://&lt;containerID&gt;.&lt;projectID&gt;.wedeploy.io/emails/&lt;emailID&gt;/status&#39;)
@@ -428,7 +428,7 @@ cd boilerplate-email-js
 });
 </code></pre>
 </article>
-<h2 id="what-s-next-">What&#39;s Next?</h2>
+<h2 id="what-s-next-">What&#39;s next?</h2>
 <ul>
 <li>That&#39;s it! Now we&#39;re ready to start sending emails to our users.</li>
 </ul>

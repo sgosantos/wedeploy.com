@@ -215,7 +215,7 @@
 								<span>Searching Data</span>
 							</a>
 							<a class="sidebar-link sidebar-link-selected" href="/docs/data/js/real-time-feeds.html">
-								<span>Real-time feeds</span>
+								<span>Real-time Feeds</span>
 							</a>
 						</li>
 					</ul>
@@ -332,10 +332,10 @@
 					
 
 					<div class="docs-content col-xs-16 col-md-9">
-						<h1 id="real-time-feeds">Real-time feeds</h1>
+						<h1 id="real-time-feeds">Real-time Feeds</h1>
 <h6 id="-wedeploy-data-inverts-the-traditional-database-architecture-instead-of-polling-for-changes-the-developer-can-tell-wedeploy-data-to-continuously-push-updated-query-results-to-applications-in-real-time-"><em>WeDeploy™ Data</em> inverts the traditional database architecture, instead of polling for changes, the developer can tell WeDeploy Data to continuously push updated query results to applications in real-time.</h6>
 <article id="watching-data-changes">
-<h2 id="watching-data-changes">Watching Data Changes</h2>
+<h2 id="watching-data-changes">Watching data changes</h2>
 <p>We presented a lot of features for data filtering and search. You may be wondering where the real-time aspect is in all of this. Well, it&#39;s throughout the features we just presented to you. To access our data in real-time, all we need to do is change the <em>WeDeploy™</em> API  <code>get</code> method to use to the <code>watch</code> method:</p>
 <pre><code class="lang-js">var data = WeDeploy.data(&#39;http://datademo.wedeploy.io&#39;);
 
@@ -348,7 +348,7 @@ data.watch(&#39;movies&#39;)
 });
 </code></pre>
 <p>Now every time the storage detects changes that affect the query you&#39;re watching, you will receive a changes notification with the response body you&#39;d receive if you had done an HTTP GET instead. Furthermore, every time this change leads to an HTTP error response, you&#39;ll receive the error object in a fail notification on the client.</p>
-<h2 id="watching-with-advanced-filters">Watching with Advanced Filters</h2>
+<h2 id="watching-with-advanced-filters">Watching with advanced filters</h2>
 <p>To present data using advanced search is simple as performing normal queries. You just would need to keep using the <code>watch</code> method and apply any filter you desire.</p>
 <pre><code class="lang-js">WeDeploy.data(&#39;http://datademo.wedeploy.io&#39;)
 .where(&#39;category&#39;, &#39;cinema&#39;)
@@ -375,7 +375,7 @@ data.watch(&#39;movies&#39;)
 });
 </code></pre>
 </article>
-<h2 id="what-s-next-">What&#39;s Next?</h2>
+<h2 id="what-s-next-">What&#39;s next?</h2>
 <ul>
 <li>Now we&#39;re ready to save and retrieve data in real-time.</li>
 </ul>
