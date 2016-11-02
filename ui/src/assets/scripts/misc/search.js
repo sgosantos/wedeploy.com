@@ -26,7 +26,7 @@ searchInput.addEventListener('input', function(e) {
 function search(term) {
 	searchInput.value = term;
 
-	return Launchpad.url('http://liferay.io/wedeploy/docs')
+	return Launchpad.url('http://docs.wedeploy.com/search')
 		.search('*', 'prefix', term)
 		.search(Filter.equal('lang', docsLang).or('lang', 'none'))
 		.highlight('content')
@@ -78,7 +78,7 @@ var sideSearchInput = document.querySelector('.sidebar-search .form-control');
 var sideSearchAutocomplete = new metal.Autocomplete({
 	inputElement: sideSearchInput,
 	data: function(query) {
-		var docs = Launchpad.url('http://liferay.io/wedeploy/docs');
+		var docs = Launchpad.url('http://docs.wedeploy.com/search');
 
 		if (query) {
 			docs.search('*', 'prefix', query)

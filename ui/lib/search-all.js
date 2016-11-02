@@ -18,7 +18,7 @@ pages.read(function(json) {
 
 function deleteAll(json) {
     request({
-        url: 'http://liferay.io/wedeploy/docs?secretToken=' + process.env.SECRET_TOKEN,
+        url: 'http://docs.wedeploy.com/search?secretToken=' + process.env.SECRET_TOKEN,
         method: 'DELETE'
     }, function (error, response, body) {
         if (!error) {
@@ -31,7 +31,7 @@ function deleteAll(json) {
 
 function saveAll(json) {
     request({
-        url: 'http://liferay.io/wedeploy/docs?secretToken=' + process.env.SECRET_TOKEN,
+        url: 'http://docs.wedeploy.com/search?secretToken=' + process.env.SECRET_TOKEN,
         method: 'POST',
         json: json
     }, function (error, response, body) {

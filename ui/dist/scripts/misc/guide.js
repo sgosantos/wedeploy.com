@@ -25,7 +25,7 @@ var sideGuideAutocomplete = new metal.Autocomplete({
 	inputElement: sideGuideInput,
 	elementClasses: 'guide-topic-' + sideGuideInput.dataset.topic,
 	data: function(query) {
-		var docs = Launchpad.url('http://liferay.io/wedeploy/docs');
+		var docs = Launchpad.url('http://docs.wedeploy.com/search');
 
 		if (query) {
 			docs.search('*', 'prefix', query)

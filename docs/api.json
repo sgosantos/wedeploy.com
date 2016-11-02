@@ -46,5 +46,16 @@
 		"auth": {
 			"validator": "$auth != null"
 		}
+	},
+	{
+		"path": "/search/*",
+		"method": "POST"
+	},
+	{
+		"path": "/search/*",
+		"method": ["GET", "PATCH", "PUT", "DELETE"],
+		"auth": {
+			"validator": "$auth != null"
+		}
 	}
 ]

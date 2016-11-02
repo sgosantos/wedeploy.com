@@ -14,7 +14,7 @@ var sideDocsInput = document.querySelector('.sidebar-search .form-control');
 var sideDocsAutocomplete = new metal.Autocomplete({
 	inputElement: sideDocsInput,
 	data: function(query) {
-		var docs = Launchpad.url('http://liferay.io/wedeploy/docs');
+		var docs = Launchpad.url('http://docs.wedeploy.com/search');
 
 		if (query) {
 			docs.search('*', 'prefix', query)
@@ -51,7 +51,7 @@ var mainInput = document.querySelector('.docs-home-top .form-control');
 var mainAutocomplete = new metal.Autocomplete({
 	inputElement: mainInput,
 	data: function(query) {
-		var docs = Launchpad.url('http://liferay.io/wedeploy/docs');
+		var docs = Launchpad.url('http://docs.wedeploy.com/search');
 
 		if (query) {
 			docs.search('*', 'prefix', query)
