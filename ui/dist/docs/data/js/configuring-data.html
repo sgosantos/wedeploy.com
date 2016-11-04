@@ -373,40 +373,38 @@
   </tr>
 </table>
 
-<p><strong>path</strong>
-A path represents the resource used to store your project data.</p>
-<p>ex:</p>
+<h5 id="path">path</h5>
+<p>A path represents the resource used to store your project data.</p>
 <pre><code>[
   {
-    &quot;path&quot;: &quot;/movies/:movieId&quot;,
+    &quot;path&quot;: &quot;/movies/:movieId&quot;
   },
   {
-    &quot;path&quot;: &quot;/fruits/*&quot;,
+    &quot;path&quot;: &quot;/fruits/*&quot;
   }
 ]
-</code></pre><p><strong>data</strong>
-You can create endpoints just for validation, in this case, data is used to finish the request in case you just need a validation or want to store the request in the collection.</p>
-<p>ex:</p>
-<pre><code>[
+</code></pre><h5 id="data">data</h5>
+<p>You can create endpoints just for validation, in this case, data is used to finish the request in case you just need a validation or want to store the request in the collection.</p>
+<pre><code class="lang-json">[
   {
     &quot;path&quot;: &quot;/fruits/*&quot;,
     &quot;data&quot;: true
   }
 ]
-</code></pre><p><strong>description</strong></p>
+</code></pre>
+<h5 id="description">description</h5>
 <p>Used to describe the behavior of an endpoint.</p>
-<p>ex:</p>
-<pre><code>[
+<pre><code class="lang-json">[
   {
     &quot;description&quot;: &quot;Returns actors of a movie&quot;,
     &quot;path&quot;: &quot;/movies/:movieId/actors&quot;,
     &quot;method&quot;: &quot;GET&quot;
   }
 ]
-</code></pre><p><strong>auth</strong></p>
+</code></pre>
+<h5 id="auth">auth</h5>
 <p>You can unauthorized applications and users to access any endpoint by using the auth field. The example below verify if the application is authenticated in order to perform the request:</p>
-<p>ex:</p>
-<pre><code>[
+<pre><code class="lang-json">[
   {
     &quot;path&quot;: &quot;/movies/*&quot;,
     &quot;auth&quot;: {
@@ -414,20 +412,20 @@ You can create endpoints just for validation, in this case, data is used to fini
     }
   }
 ]
-</code></pre><p><strong>method</strong></p>
+</code></pre>
+<h5 id="method">method</h5>
 <p>Specifies the HTTP method used for the request. In the example bellow, it allows a GET request and if you try to do a PUT or DELETE the route will not be recognized and will fail.</p>
-<p>ex:</p>
-<pre><code>[
+<pre><code class="lang-json">[
   {
     &quot;path&quot;: &quot;/moives/:movieId&quot;,
     &quot;data&quot;: true,
     &quot;method&quot;: &quot;GET&quot;
   }
 ]
-</code></pre><p><strong>parameters</strong></p>
+</code></pre>
+<h5 id="parameters">parameters</h5>
 <p>You generally would use <code>parameters</code> to force validation in order to make sure that the params sent to a collection follow predefined rules.</p>
-<p>ex:</p>
-<pre><code>[
+<pre><code class="lang-json">[
   {
     &quot;description&quot;: &quot;Creates a new movie&quot;,
     &quot;path&quot;: &quot;/movies&quot;,
@@ -440,29 +438,32 @@ You can create endpoints just for validation, in this case, data is used to fini
     &quot;data&quot;: true
   }
 ]
-</code></pre></article>
+</code></pre>
+</article>
 <article id="allowing-usage-of-all-the-collections">
 <h2 id="allowing-usage-of-all-the-collections">Allowing usage of all the collections</h2>
 <p>In order to freely use any collection with any kind of operation, you just need to add the following content in your <code>api.json</code>.</p>
-<pre><code>[
+<pre><code class="lang-json">[
   {
     &quot;path&quot;: &quot;/*&quot;,
     &quot;data&quot;: true
   }
 ]
-</code></pre><p>The path <code>/*</code> tells the data service to allow any request to the base path of the data service.</p>
+</code></pre>
+<p>The path <code>/*</code> tells the data service to allow any request to the base path of the data service.</p>
 </article>
 <article id="validating-resources">
 <h2 id="validating-resources">Validating resources</h2>
 <p>The Validator script will be executed in an environment where several request and server data will be available. In this environment, there are several global variables available to you that can be used to validate the request parameter, body, or even to authorize the request.</p>
 <p>The validator can be used as an integration with the Auth service:</p>
-<pre><code>{
+<pre><code class="lang-json">{
   &quot;path&quot;: &quot;/movies/*&quot;,
   &quot;auth&quot;: {
     &quot;validator&quot;: &quot;$auth != null&quot;
   }
 }
-</code></pre><p>The global variables are:</p>
+</code></pre>
+<p>The global variables are:</p>
 <table class="table">
   <tr>
     <th>Variable</th> <th>Description</th>
@@ -491,16 +492,19 @@ You can create endpoints just for validation, in this case, data is used to fini
 
 </table>
 
-
 <p>Some common validators are:</p>
 <p>1) Authenticated users only:</p>
-<p><code>$auth !== null</code></p>
+<pre><code class="lang-text">$auth !== null
+</code></pre>
 <p>2) Mixed with dynamic values:</p>
-<p><code>$auth.id === $params.id</code></p>
+<pre><code class="lang-text">$auth.id === $params.id
+</code></pre>
 <p>3) Validate new data value agains old one:</p>
-<p><code>$body.timestamp &gt; $data.timestamp</code></p>
+<pre><code class="lang-text">$body.timestamp &gt; $data.timestamp
+</code></pre>
 <p>4) Multiple contitional validation:</p>
-<p><code>$auth !== null &amp;&amp; $auth.id === $params.id</code></p>
+<pre><code class="lang-text">$auth !== null &amp;&amp; $auth.id === $params.id
+</code></pre>
 </article>
 <h2 id="what-s-next-">What&#39;s next?</h2>
 <p>Now that you have <em>WeDeploy™ Data</em> API settled up, you can interact <a href="/docs/data/js/saving-data.html">saving data</a>.</p>
