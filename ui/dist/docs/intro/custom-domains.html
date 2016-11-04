@@ -145,6 +145,9 @@
 							<a class="sidebar-link " href="/docs/intro/using-the-dashboard.html">
 								<span>Using the Dashboard</span>
 							</a>
+							<a class="sidebar-link " href="/docs/intro/environment-variables.html">
+								<span>Environment Variables</span>
+							</a>
 							<a class="sidebar-link " href="/docs/intro/configuration-files.html">
 								<span>Configuration Files</span>
 							</a>
@@ -198,6 +201,9 @@
 						<li class="sidebar-item">
 							<a class="sidebar-link " href="/docs/intro//">
 								<span>Getting Started</span>
+							</a>
+							<a class="sidebar-link " href="/docs/intro//configuring-data.html">
+								<span>Configuring Data</span>
 							</a>
 							<a class="sidebar-link " href="/docs/intro//saving-data.html">
 								<span>Saving Data</span>
@@ -343,7 +349,7 @@ To make a project accessible via one or more non-WeDeploy domain names, you must
 <article id="configuring-dns-for-root-domains">
 <h2 id="configuring-dns-for-root-domains">Configuring DNS for root domains</h2>
 <p>A root domain is the highest level of hierarchy for the website you control, ex: <code>mydomain.com</code>. When you register a domain name, you are registering a root domain. This means you have the access to create subdomains and file structures all branching from that root domain.</p>
-<p>If your DNS provider allow you to use CNAME for root domains, you just need to Point the ALIAS (A) entry for your root domain as described below:</p>
+<p>If your DNS provider allows you to use CNAME for root domains, you just need to Point the ALIAS entry for your root domain as described below:</p>
 <table class="table">
   <tr>
     <th>Record</th> <th>Name</th> <th>Project Target Domain</th>
@@ -353,13 +359,13 @@ To make a project accessible via one or more non-WeDeploy domain names, you must
   </tr>
 </table>
 
-<p>In some DNS Providers, it just allows you to configure IPs for root domains. In that case, you can use the static IP provided by WeDeploy:</p>
+<p>In some DNS Providers, it just allows you to configure IPs for root domains. In that case, you can use the static IP provided by WeDeploy as the target for the Address Record (A):</p>
 <table class="table">
   <tr>
     <th>Record</th> <th>Name</th> <th>Project Target Domain</th>
   </tr>
   <tr>
-    <td><code>ALIAS</code></td> <td><code>&lt;empty&gt;</code> or <code>@</code></td> <td><code>173.196.61.238</code></td>
+    <td><code>A</code></td> <td><code>&lt;empty&gt;</code> or <code>@</code></td> <td><code>173.196.61.238</code></td>
   </tr>
 </table>
 
