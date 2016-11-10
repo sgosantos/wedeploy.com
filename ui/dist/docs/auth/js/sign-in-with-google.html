@@ -357,21 +357,25 @@ auth.onSignIn(function(user) {
 </article>
 <article id="setup-app-client-id-and-secret">
 <h2 id="setup-app-client-id-and-secret">Setup app client id and secret</h2>
-<p>Create a client id and client secret by <a href="https://developers.google.com/youtube/registering_an_application">registering your application</a> on Google. After retrieving the client id and client secret you can configure them as environment variables of the authentication <code>container.json</code>.</p>
+<p>Create a client id and client secret by <a href="https://developers.google.com/youtube/registering_an_application">registering your application</a> on Google. </p>
+<blockquote>
+<p>Please be sure to add the callback url <code>http://&lt;auth-container-id&gt;.&lt;project-id&gt;.wedeploy.io/oauth/token</code> in your application.
+For local development, use <code>wedeploy.me</code> instead. To use with custom domains you can change the sufix <code>&lt;project-id&gt;.wedeploy.io</code> for your domain.</p>
+</blockquote>
+<p>After retrieving the client id and client secret you can configure them as environment variables of the authentication <code>container.json</code>.</p>
 <pre><code class="lang-json">{
     &quot;id&quot;: &quot;auth&quot;,
     &quot;name&quot;: &quot;Auth&quot;,
     &quot;type&quot;: &quot;wedeploy/auth&quot;,
     &quot;env&quot;: {
-        &quot;WEDEPLOY_AUTH_EMAIL_CONTENT&quot;: &quot;Hello ${user.name},&lt;br&gt;&lt;br&gt;Follow this link to reset your ${project.name} password:&lt;br&gt;&lt;br&gt;&lt;a href=\&quot;http://auth.${project.domain}/reset.html?code=${resetCode}&amp;email=${user.email}\&quot; target=\&quot;_blank\&quot;&gt;http://auth.${project.domain}/reset.html?code=${resetCode}&amp;email=${user.email}&lt;/a&gt;&lt;br&gt;&lt;br&gt;If you didn&#39;t ask to reset your password, you can ignore this email.&lt;br&gt;&lt;br&gt;Thanks,&lt;br&gt;&lt;br&gt;&lt;em&gt;WeDeploy Team&lt;/em&gt;&quot;,
-        &quot;WEDEPLOY_AUTH_EMAIL_REGEX&quot;: &quot;^[a-zA-Z0-9.!#$%&amp;&#39;*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$&quot;,
         &quot;WEDEPLOY_AUTH_GOOGLE&quot;: &quot;true&quot;,
-        &quot;WEDEPLOY_AUTH_GOOGLE_CLIENT_ID&quot;: &quot;&quot;,
-        &quot;WEDEPLOY_AUTH_GOOGLE_CLIENT_SECRET&quot;: &quot;&quot;,
-        &quot;WEDEPLOY_AUTH_SECURE_FIELDS&quot;: &quot;providers,password,resetKey,supportedScopes&quot;
+        &quot;WEDEPLOY_AUTH_GOOGLE_CLIENT_ID&quot;: &quot;&lt;your-google-client-id&gt;&quot;,
+        &quot;WEDEPLOY_AUTH_GOOGLE_CLIENT_SECRET&quot;: &quot;&lt;your-google-client-secret&gt;&quot;
     }
 }
 </code></pre>
+<p>Or you can add those environment variables using the dashboard.</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1435318/20008152/2ceabade-a27e-11e6-9c86-435fc1c12412.png" alt="Project Container Environment"></p>
 </article>
 <h2 id="what-s-next-">What&#39;s next?</h2>
 <ul>

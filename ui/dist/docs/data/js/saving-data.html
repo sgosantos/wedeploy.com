@@ -359,12 +359,13 @@ data.create(&#39;movies&#39;, {
 <p>As you can see, the data api uses Promises to help you to make async requests.</p>
 <p>This operation will return the newly created document, with the following generated ID:</p>
 <pre><code class="lang-js">{
-  &quot;id&quot;:&quot; 115992383516607958&quot;,
+  &quot;id&quot;:&quot; &quot;115992383516607958&quot;,
   &quot;title&quot;: &quot;Star Wars IV&quot;,
   &quot;year&quot;: 1977,
   &quot;rating&quot;: 8.7
 }
 </code></pre>
+<p>Generated ID is a string and it&#39;s structure may vary. It is also possible to define custom app-specific value for the ID, by simply passing the <code>id</code> field as part of the new document.</p>
 </article>
 <article id="inserting-multiple-data">
 <h2 id="inserting-multiple-data">Inserting multiple data</h2>
