@@ -115,10 +115,10 @@
 }
 
 #view-3__2 .info-box p {
-	font-family: $font-family-secondary;
+	font-family: $font-family-secondary-semibold;
 	line-height: 36px;
 	margin-bottom: ($baseline * 3);
-	color: rgba($white, .6);
+	color: rgba($white, .4);
 	width: 100%;
 
 	&.top-title {

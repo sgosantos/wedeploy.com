@@ -236,6 +236,10 @@
 #browser #browser__new-project {
 	text-align: right;
 
+	.btn {
+		font-family: 'Galano Semibold', sans-serif;
+	}
+
 	.btn:hover {
 		cursor: default;
 		background: $accent;
@@ -309,7 +313,7 @@
 	font-size: 12px;
 	color: rgba($primary, 0.8);
 	box-shadow: 0 2px 12px rgba($primary, 0.12);
-	font-family: $font-family-secondary-bold;
+	font-family: $font-family-secondary-semibold;
 	border-radius: 4px;
 
 	&.show-custom-tooltip:hover {
@@ -686,6 +690,7 @@ p.project-item__status span.text {
 }
 
 #cli .cli__terminal {
+	width: 100%;
 	@media (min-width: 1280px) {
 		padding: 12px 20px;
 	}
@@ -695,8 +700,13 @@ p.project-item__status span.text {
 	}
 }
 
+#cli .cli__terminal .terminal-content {
+	width: 100%;
+}
+
 #cli .cli__terminal .terminal-content p {
-	font-family: 'Roboto Mono', ;
+	width: 100%;
+	font-family: 'Roboto Mono', sans-serif;
 	font-size: 14px;
 	color: $white;
 	margin: 0 0 12px;

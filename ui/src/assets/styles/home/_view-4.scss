@@ -200,9 +200,9 @@
 	margin:0 0 ($baseline * 5);
 	position:relative;
 	top: -3px;
-	font-family: 'Galano Medium', sans-serif;
+	font-family: 'Galano Semibold', sans-serif;
 	font-weight: 400;
-	color: rgba($primary, .6);
+	color: rgba($primary, .4);
 
 	@media (min-width: 320px) {
 		font-size: 17px;
@@ -444,9 +444,9 @@ li.feature {
 	margin: 0;
 	padding: 0 0 $baseline;
 	font-size: 15px;
-	font-family: 'Galano Medium', sans-serif;
+	font-family: 'Galano Semibold', sans-serif;
 	line-height: 24px;
-	color: rgba(14, 20, 26, 0.6);
+	color: rgba(14, 20, 26, 0.4);
 	font-weight: 400;
 	position: relative;
 	top: 6px;
