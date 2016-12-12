@@ -116,9 +116,9 @@
 #browser .browser__top h3 {
 	margin: 0;
 	padding: 0;
-	font-family: 'Galano Medium', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
-	font-weight: 400;
+	font-weight: 700;
 	color: rgba($primary, 0.2);
 }
 
@@ -226,6 +226,11 @@
 }
 
 #browser #browser__recent {
+	.btn {
+		font-family: 'Open Sans', sans-serif;
+		font-weight: 700;
+		font-size: 13px;
+	}
 	.btn:hover {
 		cursor: default;
 		background: rgba($primary, 0.1);
@@ -237,7 +242,8 @@
 	text-align: right;
 
 	.btn {
-		font-family: 'Galano Semibold', sans-serif;
+		font-family: 'Open Sans', sans-serif;
+		font-weight: 700;
 	}
 
 	.btn:hover {
@@ -247,10 +253,11 @@
 }
 
 #browser__title {
-	font-size: 20px;
+	font-size: 23px;
 	font-family: $font-family-secondary-bold;
 	line-height: 36px;
 	text-align: center;
+	font-weight: 400;
 }
 
 .svg-ic img {
@@ -480,12 +487,13 @@
 
 .project-item__content p.large {
 	height: ($baseline * 2);
+	padding: 1px 0;
 	color: rgba($primary, .9);
-	font-size: 16px;
-	line-height: 24px;
-	font-weight: 400;
+	font-size: 14px;
+	line-height: 26px;
+	font-weight: 700;
 	position: relative;
-	font-family: $font-family-secondary-bold;
+	font-family: $font-family-sans-serif;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -680,13 +688,11 @@ p.project-item__status span.text {
 #cli .cli__top h3 {
 	margin: 0 0 0 2px;
 	padding: 0;
-	font-family: 'Galano Medium', sans-serif;
-	font-size: 14.4px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
 	line-height: 24px;
-	font-weight: 400;
+	font-weight: 700;
 	color: rgba($primary, 0.2);
-	position: relative;
-	top: -1px;
 }
 
 #cli .cli__terminal {
