@@ -101,6 +101,15 @@ gulp.task('pages-docs-redirect', function() {
 		.pipe(gulp.dest('dist/docs'));
 });
 
+gulp.task('pages-blog', function() {
+	return gulp.src('src/content/blog/**')
+		.pipe(layout({
+			layout: 'src/layouts/blog.html',
+			engine: 'nunjucks'
+		}))
+		.pipe(gulp.dest('dist/blog'));
+});
+
 // Markdown --------------------------------------------------------------------
 
 gulp.task('pages-terms', function() {
@@ -153,7 +162,8 @@ gulp.task('pages-guide', function() {
 
 gulp.task('build', [
 	'styles', 'vendor-styles', 'fonts', 'scripts', 'vendor-scripts', 'metal:build:js',
-	'images', 'pages-home', 'pages-search', 'pages-terms', 'pages-docs', 'pages-guide'
+	'images', 'pages-home', 'pages-search', 'pages-terms', 'pages-docs', 'pages-guide',
+	'pages-blog'
 ]);
 
 gulp.task('server', ['build'], function() {
