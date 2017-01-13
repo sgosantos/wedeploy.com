@@ -989,7 +989,27 @@ babelHelpers;
 		}
 
 		babelHelpers.createClass(string, null, [{
-			key: 'collapseBreakingSpaces',
+			key: 'caseInsensitiveCompare',
+
+			/**
+    * Compares the given strings without taking the case into account.
+    * @param {string|number} str1
+    * @param {string|number} str2
+    * @return {number} Either -1, 0 or 1, according to if the first string is
+    *     "smaller", equal or "bigger" than the second given string.
+    */
+			value: function caseInsensitiveCompare(str1, str2) {
+				var test1 = String(str1).toLowerCase();
+				var test2 = String(str2).toLowerCase();
+
+				if (test1 < test2) {
+					return -1;
+				} else if (test1 === test2) {
+					return 0;
+				} else {
+					return 1;
+				}
+			}
 
 			/**
     * Removes the breaking spaces from the left and right of the string and
@@ -998,6 +1018,9 @@ babelHelpers;
     * @param {string} str A string in which to collapse spaces.
     * @return {string} Copy of the string with normalized breaking spaces.
     */
+
+		}, {
+			key: 'collapseBreakingSpaces',
 			value: function collapseBreakingSpaces(str) {
 				return str.replace(/[\t\r\n ]+/g, ' ').replace(/^[\t\r\n ]+|[\t\r\n ]+$/g, '');
 			}
@@ -3508,12 +3531,10 @@ babelHelpers;
 				var search = this.url.search;
 				if (search) {
 					search.substring(1).split('&').forEach(function (param) {
-						var _param$split = param.split('=');
-
-						var _param$split2 = babelHelpers.slicedToArray(_param$split, 2);
-
-						var key = _param$split2[0];
-						var value = _param$split2[1];
+						var _param$split = param.split('='),
+						    _param$split2 = babelHelpers.slicedToArray(_param$split, 2),
+						    key = _param$split2[0],
+						    value = _param$split2[1];
 
 						if (core.isDef(value)) {
 							value = Uri.urlDecode(value);
@@ -13296,9 +13317,9 @@ babelHelpers;
 		}, {
 			key: 'handleChildrenCaptured_',
 			value: function handleChildrenCaptured_(tree) {
-				var _componentToRender_ = this.componentToRender_;
-				var config = _componentToRender_.config;
-				var tag = _componentToRender_.tag;
+				var _componentToRender_ = this.componentToRender_,
+				    config = _componentToRender_.config,
+				    tag = _componentToRender_.tag;
 
 				config.children = this.buildChildren_(tree.config.children);
 				this.componentToRender_ = null;
