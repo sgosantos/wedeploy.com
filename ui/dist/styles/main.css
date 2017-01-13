@@ -9291,7 +9291,7 @@ input:-webkit-autofill {
   padding: 24px 0 12px; }
   #topbar .topbar .topbar-list {
     max-width: 100%; }
-    @media (max-width: 599px) {
+    @media (max-width: 679px) {
       #topbar .topbar .topbar-list .topbar-item {
         margin: 0; }
         #topbar .topbar .topbar-list .topbar-item:not(.login) {
@@ -9307,7 +9307,7 @@ input:-webkit-autofill {
         margin: 0 20px; } }
     #topbar .topbar .topbar-list .topbar-item:last-child {
       margin-right: 0px; }
-    @media (max-width: 720px) {
+    @media (max-width: 780px) {
       #topbar .topbar .topbar-list .get-started {
         display: none; } }
   #topbar .topbar .topbar-link {

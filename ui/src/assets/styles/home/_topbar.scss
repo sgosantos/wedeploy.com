@@ -71,7 +71,7 @@
 		max-width: 100%;
 
 		.topbar-item {
-			@media	(max-width: 599px) {
+			@media	(max-width: 679px) {
 				margin: 0;
 				&:not(.login) {
 					display: none;
@@ -96,7 +96,7 @@
 		}
 
 		.get-started {
-			@media	(max-width: 720px) {
+			@media	(max-width: 780px) {
 				display: none;
 			}
 		}
