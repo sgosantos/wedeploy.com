@@ -392,7 +392,7 @@ WeDeploy
 <p>Any search in the previous example results in the following match:</p>
 <pre><code class="lang-js">[{&quot;id&quot;:&quot;star_wars_vii&quot;,&quot;title&quot;:&quot;Star Wars: Episode VII - The Force Awakens&quot;,&quot;year&quot;:2015}]
 </code></pre>
-<p>What we did with * can also be done with the prefix operator Filter.prefix(&#39;title&#39;, &#39;awake&#39;). The fuzziness we added to &#39;wakens&#39; using ~, can also be done explicitly with the fuzzy operator Filter.fuzzy(&#39;title&#39;, &#39;wakens&#39;).</p>
+<p>What we did with <code>*</code> can also be done with the prefix operator <code>Filter.prefix(&#39;title&#39;, &#39;awake&#39;)</code>. The fuzziness we added to <code>wakens</code> using <code>~</code>, can also be done explicitly with the fuzzy operator <code>Filter.fuzzy(&#39;title&#39;, &#39;wakens&#39;)</code>.</p>
 <p>So far we are still just filtering data with filters. We can do so much more than that! If we use &#39;query search&#39; instead of &#39;filter&#39; to send those filters to the server, we can also get information about how relevant a document is to a given search, and order our results by this criteria. Let us introduce this with a new filter that allows us to query movies with a title similar to a given text:</p>
 <pre><code class="lang-js">WeDeploy
 .data()
@@ -522,7 +522,7 @@ WeDeploy
 }
 </code></pre>
 <p>Notice that in order to read and write your service&#39;s root path you need to map it with an API endpoint and data flag active.
-If we want to inform the server of the data type of a collection field before it receives its first document, we can POST/PATCH the data root with the mapping information:</p>
+If we want to inform the server of the data type of a collection field before it receives its first document, we can <code>POST</code>/<code>PATCH</code> the data root with the mapping information:</p>
 <pre><code class="lang-js">WeDeploy
 .url(&#39;http://data.datademo.wedeploy.me/&#39;)
 .post({
@@ -531,7 +531,7 @@ If we want to inform the server of the data type of a collection field before it
    }
 });
 </code></pre>
-<p>We can never update an already mapped field, but we can map new fields in an existing collection, as we did in the request above. When we manually map our collection, we can use some extra datatypes that are not mapped dynamically: date, geo_point, and geo_shape. We will focus on geo_point for this next feature.</p>
+<p>We can never update an already mapped field, but we can map new fields in an existing collection, as we did in the request above. When we manually map our collection, we can use some extra datatypes that are not mapped dynamically: <code>date</code>, <code>geo_point</code>, and <code>geo_shape</code>. We will focus on geo_point for this next feature.</p>
 <p>So, we mapped a field called location, in the collection places, as representing a geolocation point. This means we can operate, filter, and aggregate the places we put in that collection, using geo filters over this field! Let&#39;s try something simple: find cinemas close to London&#39;s Waterloo Station. To run the search criteria, we&#39;ll use the following code:</p>
 <pre><code class="lang-js">WeDeploy
 .data()
