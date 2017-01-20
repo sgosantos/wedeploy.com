@@ -7,6 +7,7 @@ var replace = require('gulp-replace');
 var sass = require('gulp-sass');
 var path = require('path');
 var livereload = require('gulp-livereload');
+var marble = require('marble');
 
 metal.registerTasks({
 	taskPrefix: 'metal:',
@@ -19,11 +20,11 @@ metal.registerTasks({
 
 gulp.task('styles', function() {
 	return gulp.src('src/assets/styles/**/*.scss')
-		.pipe(sass({includePaths: ['node_modules']}))
+		.pipe(sass({includePaths: ['node_modules', marble.src]}))
 		.pipe(gulp.dest('dist/styles'));
 });
 
-gulp.task('vendor-styles', ['vendor-westyles'], function() {
+gulp.task('vendor-styles', ['vendor-marble'], function() {
 	return gulp.src([
 			'bower_components/senna/build/senna.css',
 			'bower_components/highlightjs/styles/tomorrow-night-eighties.css'
@@ -31,9 +32,9 @@ gulp.task('vendor-styles', ['vendor-westyles'], function() {
 		.pipe(gulp.dest('dist/styles/vendor'));
 });
 
-gulp.task('vendor-westyles', function() {
-	return gulp.src(['node_modules/westyle/build/**'])
-		.pipe(gulp.dest('dist/styles/vendor/westyle'));
+gulp.task('vendor-marble', function() {
+	return gulp.src(['node_modules/marble/build/**'])
+		.pipe(gulp.dest('dist/styles/vendor/marble'));
 });
 
 // Fonts -----------------------------------------------------------------------

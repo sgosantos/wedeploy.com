@@ -12,7 +12,7 @@
     "metal-reading-progress": "^1.0.0-rc.1",
     "metal-toggler": "^v1.0.0-rc.1",
     "nunjucks": "2.4.2",
-    "westyle": "wedeploy/westyle#master"
+    "marble": "wedeploy/marble#master"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
