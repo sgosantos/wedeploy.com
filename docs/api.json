@@ -25,11 +25,11 @@
 	},
 	{
 		"path": "/search/*",
-		"method": "POST"
+		"method": "GET"
 	},
 	{
 		"path": "/search/*",
-		"method": ["GET", "PATCH", "PUT", "DELETE"],
+		"method": ["POST", "PATCH", "PUT", "DELETE"],
 		"auth": {
 			"validator": "$values.secretToken == 'r3m3mb3r'"
 		}
