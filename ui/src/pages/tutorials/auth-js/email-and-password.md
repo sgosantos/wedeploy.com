@@ -38,6 +38,12 @@ WeDeploy.auth("urlAuth")
 	}
 ```
 
+```java
+WeDeploy.auth("urlAuth")
+    .signIn("email", "password")
+    .execute();
+```
+
 `signInWithEmailAndPassword` is part of the WeDeploy Auth API that allows you to set form inputs as the email and password values of the authentication.
 
 
