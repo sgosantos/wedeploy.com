@@ -30,7 +30,7 @@ function signInWithEmailAndPassword() {
 ```text/x-swift
 WeDeploy.auth("urlAuth")
     .signInWith(login:"login", password:"password")
-    .then { user in 
+    .then { auth in 
     	print("Sign-in successfully")
 	}
 	.catch(
