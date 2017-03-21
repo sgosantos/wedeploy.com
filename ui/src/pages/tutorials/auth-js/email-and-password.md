@@ -27,6 +27,17 @@ function signInWithEmailAndPassword() {
 }
 ```
 
+```text/x-swift
+WeDeploy.auth("urlAuth")
+    .signInWith(login:"login", password:"password")
+    .then { user in 
+    	print("Sign-in successfully")
+	}
+	.catch(
+		print("Sign-in failed")
+	}
+```
+
 `signInWithEmailAndPassword` is part of the WeDeploy Auth API that allows you to set form inputs as the email and password values of the authentication.
 
 
