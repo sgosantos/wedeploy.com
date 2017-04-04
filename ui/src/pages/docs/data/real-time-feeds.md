@@ -44,6 +44,13 @@ socket.on([.changes, .error]) { data in
 	}
 }
 ```
+```java
+WeDeploy
+	.data("http://datademo.wedeploy.io")
+	.watch("movies")
+	.on("changes", data -> System.out.println(data))
+	.on("fail", error -> System.out.println(error));
+```
 
 Now every time the storage detects changes that affect the query you're watching, you will receive a changes notification with the response body you'd receive if you had done an HTTP GET instead. Furthermore, every time this change leads to an HTTP error response, you'll receive the error object in a fail notification on the client.
 
@@ -87,6 +94,14 @@ socket.on([.changes, .error]) { data in
 	}
 }
 ```
+```java
+WeDeploy
+	.data("http://datademo.wedeploy.io")
+	.where(equal("category", "cinema").or("category", "cartoon"))
+	.watch("movies")
+	.on("changes", data -> System.out.println(data))
+	.on("fail", error -> System.out.println(error));
+```
 
 </article>
 
@@ -127,6 +142,15 @@ socket.on([.changes, .error]) { data in
 		break
 	}
 }
+```
+```java
+WeDeploy
+	.data("http://datademo.wedeploy.io")
+	.limit(1)
+	.orderBy("id", SortOrder.DESCENDING)
+	.watch("movies")
+	.on("changes", data -> System.out.println(data))
+	.on("fail", error -> System.out.println(error));
 ```
 
 </article>

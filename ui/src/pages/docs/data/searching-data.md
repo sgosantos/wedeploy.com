@@ -36,6 +36,13 @@ WeDeploy
 		print(movies)
 	}
 ```
+```java
+WeDeploy
+	.data("http://datademo.wedeploy.io")
+	.where(match("title", "Sith's revenge"))
+	.get("movies")
+	.execute();
+```
 
 The result of the match operator query is the following entry:
 
@@ -101,6 +108,28 @@ WeDeploy
 		print(movies)
 	}
 ```
+```java
+// we can run this
+WeDeploy
+	.data("http://datademo.wedeploy.io")
+	.where(match("title", "(jedi | force) -return"))
+	.get("movies")
+	.execute();
+
+// or this
+WeDeploy
+	.data("http://datademo.wedeploy.io")
+	.where(match("title", "awake*"))
+	.get("movies")
+	.execute();
+
+// or even this
+WeDeploy
+	.data("http://datademo.wedeploy.io")
+	.where(match("title", "awake~"))
+	.get("movies")
+	.execute();
+```
 
 Any search in the previous example results in the following match:
 
@@ -129,6 +158,13 @@ WeDeploy
 	.then { movies in
 		print(movies)
 	}
+```
+```java
+WeDeploy
+	.data("http://datademo.wedeploy.io")
+	.where(similar("title", "The attack an awaken Jedi uses to strike a Sith is pure force!"))
+	.search("movies")
+	.execute();
 ```
 
 We receive not only the documents that match the filter, but also search metadata:
@@ -193,6 +229,14 @@ WeDeploy
 		print(movies)
 	}
 ```
+```java
+WeDeploy
+	.data("http://datademo.wedeploy.io")
+	.where(similar("title", "The attack an awakened Jedi uses to strike a Sith is pure force!"))
+	.highlight("title")
+	.search("movies")
+	.execute();
+```
 
 As you can see in the code below, our keywords are highlighted in the results:
 
@@ -256,6 +300,15 @@ WeDeploy
 		print(aggregation)
 	}
 ```
+```java
+WeDeploy
+	.data("http://datademo.wedeploy.io")
+	.where(lt("year", 1990))
+	.aggregate(avg("Old Movies", "rating"))
+	.count()
+	.get("movies")
+	.execute();
+```
 
 The count we added to the query informed the server that we are not interested in the documents themselves, but rather the number of matches and search metadata. The result, in this case, will be the following data:
 
@@ -312,6 +365,17 @@ WeDeploy
 		]
 	])
 ```
+```java
+JSONObject locationJsonObject = new JSONObject()
+	.put("location", "geo_point");
+
+JSONObject placesJsonObject = new JSONObject()
+	.put("places", locationJsonObject);
+
+WeDeploy
+	.data("http://datademo.wedeploy.io")
+	.create("", placesJsonObject);
+```	
 
 We can never update an already mapped field, but we can map new fields in an existing collection, as we did in the request above. When we manually map our collection, we can use some extra datatypes that are not mapped dynamically: date, geo_point, and geo_shape. We will focus on geo_point for this next feature.
 
@@ -336,6 +400,13 @@ WeDeploy
 	.then { places
 		print(places)
 	}
+```
+```java
+WeDeploy
+	.data("http://datademo.wedeploy.io")
+	.where(any("category", "cinema").and(distance("location", "51.5031653,-0.1123051", "1mi")))
+	.get("places")
+	.execute();
 ```
 
 Our result is the following matches:

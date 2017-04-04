@@ -32,6 +32,12 @@ WeDeploy
 		print(movie)
 	}
 ```
+```java
+WeDeploy
+	.data("http://datademo.wedeploy.io")
+	.get("movies/star_wars_v")
+	.execute();
+```
 
 The response body is the stored JSON document:
 
@@ -61,6 +67,12 @@ WeDeploy
 	.then { (movie: String) in // You have to specify the type here to allow compiler infer type
 		print(movie)
 	}
+```
+```java
+WeDeploy
+	.data("http://datademo.wedeploy.io")
+	.get("movies/star_wars_v/title")
+	.execute();
 ```
 
 The full path returns the raw content in the response body:
@@ -104,6 +116,13 @@ WeDeploy
 	.then { movies in
 		print(movies)
 	}
+```
+```java
+WeDeploy
+	.data("http://datademo.wedeploy.io")
+	.orderBy("rating", SortOrder.DESCENDING)
+	.get("movies")
+	.execute();
 ```
 
 As expected, the result would be the following list:
@@ -150,6 +169,13 @@ WeDeploy
 		print(movies)
 	}
 ```
+```java
+WeDeploy
+	.data("http://datademo.wedeploy.io")
+	.where(lt("year", 2000).or(gt("rating", 8.5)))
+	.get("movies")
+	.execute();
+```
 
 The following entries are the result of the above filters:
 
@@ -191,6 +217,16 @@ WeDeploy
 	.then { movies in
 		print(movies)
 	}
+```
+```java
+WeDeploy
+	.data("http://datademo.wedeploy.io")
+	.where(gt("year", 2000))
+	.orderBy("rating")
+	.limit(2)
+	.offset(1)
+	.get("movies")
+	.execute();
 ```
 
 Notice that filtering by year only returns episodes I, II, III, and VII. Applying the 'rating' sort will give us this same order. We also limited the result to show only two documents and skip the first one. The final result is the following entries:

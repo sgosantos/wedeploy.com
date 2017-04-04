@@ -41,6 +41,15 @@ WeDeploy
 		print(movie)
 	}
 ```
+```java
+JSONObject movieJsonObject = new JSONObject()
+	.put("rating", 9.1);
+
+WeDeploy
+	.data("http://datademo.wedeploy.io")
+	.update("movies/115992383516607958", movieJsonObject)
+	.execute();
+```
 
 As you can see, the data api uses Promises to help you to make async requests.
 

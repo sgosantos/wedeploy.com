@@ -45,6 +45,17 @@ WeDeploy
 		print(movie)
 	}
 ```
+```java
+JSONObject movieJsonObject = new JSONObject()
+	.put("title", "Star Wars IV")
+	.put("year", 1977)
+	.put("rating", 8.7);
+
+WeDeploy
+	.data("http://datademo.wedeploy.io")
+	.create("movies", movieJsonObject)
+	.execute();
+```
 
 As you can see, the data api uses Promises to help you to make async requests.
 
@@ -107,6 +118,26 @@ WeDeploy
 		print(movie)
 	}
 ```
+```java
+JSONObject movie1JsonObject = new JSONObject()
+	.put("title", "Star Wars III")
+	.put("year", 2005)
+	.put("rating", 8.0);
+
+JSONObject movie2JsonObject = new JSONObject()
+	.put("title", "Star Wars II")
+	.put("year", 2002)
+	.put("rating", 8.6);
+
+JSONArray moviesJsonArray = new JSONArray()
+	.put(movie1JsonObject)
+	.put(movie2JsonObject);
+
+WeDeploy
+	.data("http://datademo.wedeploy.io")
+	.create("movies", moviesJsonArray)
+	.execute();
+```
 
 This operation will return the newly created array of documents, with the following generated IDs:
 
@@ -161,6 +192,18 @@ WeDeploy
 	.then { movie in
 		print(movie)
 	}
+```
+```java
+JSONObject movieJsonObject = new JSONObject()
+	.put("title", "Star Wars I")
+	.put("obs", "First in ABC order")
+	.put("year", 1999)
+	.put("rating", 9.0);
+
+WeDeploy
+	.data("http://datademo.wedeploy.io")
+	.create("movies", movieJsonObject)
+	.execute();
 ```
 
 This operation will return the newly created document, with the following generated ID:
