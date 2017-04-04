@@ -43,6 +43,15 @@ WeDeploy
 		// Some error has happened
 	}
 ```
+```java
+WeDeploy
+	.email("http://<serviceID>.<projectID>.wedeploy.io/emails")
+	.from("from@domain.com")
+	.to("to@domain.com")
+	.subject("Hi there!")
+	.send()
+	.execute();
+```
 
 As a result, we'll receive an email ID. This doesn't indicate that the email has already sent, it actually just means that it was added to the email queue. See ["checking the email status"](/docs/email/checking-status.html) to learn more about email status.
 
