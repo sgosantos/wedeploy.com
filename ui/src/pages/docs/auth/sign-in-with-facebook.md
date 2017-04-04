@@ -40,6 +40,28 @@ auth.signInWithRedirect(provider: provider) { (user, error) in
 
 //Add WeDeploy.auth("<auth-url>").handle(url: url) in AppDelegate's open url method	
 ```
+```java
+// In AndroidManifest.xml, declare an intent filter for the Activity you want to receive the token.
+// Don't forget to replace [mypackagename] with you application package name.
+<intent-filter>
+	<action android:name="android.intent.action.VIEW" />
+	<category android:name="android.intent.category.DEFAULT" />
+	<category android:name="android.intent.category.BROWSABLE" />
+	<data android:scheme="oauth-wedeploy" android:host="[mypackagename]" />
+</intent-filter>
+
+// On your Activity:
+AuthProvider provider = new AuthProvider.Builder()
+	.redirectUri("oauth-wedeploy://[mypackagename]")
+	.provider(Provider.FACEBOOK)
+	.providerScope("email")
+	.build();
+
+WeDeploy.auth(authUrl)
+	.signIn(this, provider);
+	
+// Use Auth auth = TokenAuth.getAuthFromIntent(intent); to get the token from the Intent
+```
 
 </article>
 

@@ -143,6 +143,9 @@ WeDeploy.auth('http://<serviceID>.<projectID>.wedeploy.me');
 ```swift
 WeDeploy.auth('http://<serviceID>.<projectID>.wedeploy.me');
 ```
+```java
+WeDeploy.auth('http://<serviceID>.<projectID>.wedeploy.me');
+```
 
 After initializing the authentication service URL, WeDeploy client stores its information for future calls.
 
@@ -152,6 +155,9 @@ Note that if you are initializing an auth service pointing to the Cloud you shou
 WeDeploy.auth('http://<serviceID>.<projectID>.wedeploy.io');
 ```
 ```swift
+WeDeploy.auth('http://<serviceID>.<projectID>.wedeploy.io');
+```
+```java
 WeDeploy.auth('http://<serviceID>.<projectID>.wedeploy.io');
 ```
 
