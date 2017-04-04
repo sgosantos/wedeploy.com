@@ -84,3 +84,49 @@ WeDeploy
 ```
 
 </article>
+
+<article id="3">
+
+## Android API Installation
+
+For sending/receiving requests to/from WeDeploy from an Android App, you can use the Android API Client. In order to start using it, you just need to add the following line to your build.gradle file:
+
+```groovy
+compile 'com.wedeploy:android-api:1.0-beta'
+```
+
+#### API nuances
+
+Before calling any method from WeDeploy, you have to build its instance:
+
+```java
+WeDeploy weDeploy = new WeDeploy.Builder().build();
+```
+
+Then, you are able to synchronously fire requests to WeDeploy by calling execute():
+
+```java
+weDeploy
+	.data("http://datademo.wedeploy.io")
+	.get("movies")
+	.execute();
+```
+
+You can also fire asynchronous requests by specifying a Callback to the execute() method:
+
+```java
+weDeploy
+	.data("http://datademo.wedeploy.io")
+	.get("movies")
+	.execute(new Callback() {
+		public void onSuccess(Response response) {
+			// here you receive the movies
+		}
+
+		public void onFailure(Exception e) {
+			// oops something went wrong
+		}
+	});
+```
+
+</article>
