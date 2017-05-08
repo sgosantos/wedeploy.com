@@ -129,4 +129,22 @@ weDeploy
 	});
 ```
 
+The Wedeploy Android API is RxJava 2 compatible. It means that you can convert the request into a Single RxJava object, which emits either a success or an error event. You must add a dependency to RxAndroid in your project build.gradle in order to use it.
+
+```java
+weDeploy
+	.data("http://datademo.wedeploy.io")
+	.get("movies")
+	.asSingle()
+	.subscribeOn(Schedulers.io())
+	.observeOn(AndroidSchedulers.mainThread())
+	.subscribe(
+		response -> {
+
+		},
+		throwable -> {
+
+		});
+```
+
 </article>
