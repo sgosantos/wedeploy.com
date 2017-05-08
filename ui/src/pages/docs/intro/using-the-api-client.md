@@ -92,7 +92,7 @@ WeDeploy
 For sending/receiving requests to/from WeDeploy from an Android App, you can use the Android API Client. In order to start using it, you just need to add the following line to your build.gradle file:
 
 ```groovy
-compile 'com.wedeploy:android-api:1.0-beta'
+compile 'com.wedeploy:com.wedeploy.android:beta-20170505'
 ```
 
 #### API nuances
