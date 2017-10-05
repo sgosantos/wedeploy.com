@@ -65,7 +65,8 @@ export function generateSnippetAndroid(dataDemoInstance) {
 \t.highlight("name")
 \t.limit(${itemsPerPage})
 \t.offset(${itemsPerPage * currentPage})
-\t.search("shows");`;
+\t.search("shows")
+\t.execute();`;
 
   return value;
 }
